@@ -17,4 +17,4 @@ A Discord bot that features games, image manipulation, moderation and music comm
 ## Discord server
 Join our bot's home server for hanging out our development team!
 
-[![YottaBot Hub](https://discordapp.com/api/guilds/347282801021943810/widget.png?style=banner3)](https://discord.gg/Ezh6JyV)
+[![YottaBot Hub](https://discordapp.com/api/guilds/347282801021943810/widget.png?style=banner3)](https://discord.gg/mQ85U7m)
