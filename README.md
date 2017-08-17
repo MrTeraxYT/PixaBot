@@ -13,6 +13,7 @@ A Discord bot that features games, image manipulation, moderation and music comm
 ### Developers
 * [Kaiss#4599](https://github.com/OfficialRain) - Founder, lead developer
 * [Mr.Terax#9758](https://github.com/MrTeraxYT) - Co-developer
+* [Rain#8241](https://github.com/OfficialRain)
 
 ## Discord server
 Join our bot's home server for hanging out our development team!
