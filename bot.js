@@ -1,7 +1,6 @@
 client.login("")
 
 var prefix = "px;"
-var version = "v0.2 Beta 1"
 
 client.on("message", function(message) {
 
@@ -21,36 +20,24 @@ client.on("message", function(message) {
            	.setTimestamp()
             message.channel.send({embed1});
             break;
-        // about command
-        case "about":
-            const embed2 = new Discord.RichEmbed()
-	        .setColor("#940000")
-            	.setTitle("About PixaBot", "PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
-           	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
-           	.setTimestamp()
-            message.channel.send({embed2});
-            break;
-        // version command
+	// about command
+	case "about":
+		message.channel.send("A Discord bot that features games, image manipulation, moderation and music commands; written in JavaScript Here are the developers: Rain , Kaiss, Inkydink, Yottabyte Inside")
+		break;
+	var version = "0.2 ";
+	// version command
         case "version":
             message.channel.send("The current version of PixaBot is " + 0.2  + " beta 1")
             break;
-        // kick command
         case "kick":
 		    message.channel.send("Coming Soon!")
-		break;
-        // ban command
-	case "ban":
-		message.channel.send("Coming Soon!")
-		break;
-	case "help":
-            const embed3 = new Discord.RichEmbed()
-	        .setColor("#940000")
-            	.setTitle("PixaBot Help Guide", "Here are my available commands. To execute one of my commands, my prefix is `px;`.")
-            	.addField("General Commands", "Coming soon!")
-            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
-           	.setTimestamp()
-            	message.channel.send({embed3});
-		break;
+			break;
+		case "ban":
+		    message.channel.send("Coming Soon!")
+			break;
+		case "help":
+		    message.channel.send("coming soon!")
+			break;
 	    case "coming soon":
 		    message.channel.send("kick: px;kick ban: px;ban and help command")
             break;
@@ -58,3 +45,4 @@ client.on("message", function(message) {
 		    message.channel.send("no but you can be jailed if you want (from kaiss)")
             break;		
 }
+})
