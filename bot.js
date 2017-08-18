@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client()
 
-client.login("MzQ3MjgzNzg3NzgyMDI5MzE0.DHipIA.ixmt1qYaaoU8-2hLNzmavWVwbuM")
+client.login("token")
 
 var prefix = "px;"
 
