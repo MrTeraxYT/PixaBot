@@ -18,7 +18,7 @@ client.on("message", function(message) {
            	.setTitle(":ping_pong: Pong!", "Response time: " + client.ping + "ms")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
-            message.channel.send({embed});
+            message.channel.send({embed1});
             break;
         // about command
         case "about":
@@ -27,7 +27,7 @@ client.on("message", function(message) {
             	.setTitle("About PixaBot", "PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
-            message.channel.send({embed});
+            message.channel.send({embed2});
             break;
         // version command
         case "version":
@@ -48,7 +48,7 @@ client.on("message", function(message) {
             	.addField("General Commands", "Coming soon!")
             	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
-            	message.channel.send({embed});
+            	message.channel.send({embed3});
 		break;
 	    case "coming soon":
 		    message.channel.send("kick: px;kick ban: px;ban and help command")
