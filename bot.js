@@ -18,7 +18,7 @@ client.on("message", function(message) {
            	.setTitle(":ping_pong: Pong!", "Response time: " + client.ping + "ms")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
-            message.channel.send({embed1});
+            message.channel.send({embed});
             break;
 	// about command
 	case "about":
