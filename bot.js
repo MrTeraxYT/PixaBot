@@ -19,16 +19,16 @@ client.on("message", function(message) {
            	.setTitle(":ping_pong: Pong!", "Response time: " + client.ping + "ms")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
-            message.channel.send({embed1});
+            message.channel.send({embed});
             break;
         // about command
         case "about":
-            const embed2 = new Discord.RichEmbed()
+            const embed = new Discord.RichEmbed()
 	        .setColor("#940000")
             	.setTitle("About PixaBot", "PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
-            message.channel.send({embed2});
+            message.channel.send({embed});
             break;
         // version command
         case "version":
@@ -43,13 +43,13 @@ client.on("message", function(message) {
 		message.channel.send("Coming Soon!")
 		break;
 	case "help":
-            const embed3 = new Discord.RichEmbed()
+            const embed = new Discord.RichEmbed()
 	        .setColor("#940000")
             	.setTitle("PixaBot Help Guide", "Here are my available commands. To execute one of my commands, my prefix is `px;`.")
             	.addField("General Commands", "Coming soon!")
             	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
-            	message.channel.send({embed3});
+            	message.channel.send({embed});
 		break;
 	    case "coming soon":
 		    message.channel.send("kick: px;kick ban: px;ban and help command")
