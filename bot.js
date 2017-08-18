@@ -16,7 +16,8 @@ client.on("message", function(message) {
         case "ping":
              const embed = new Discord.RichEmbed()
            	.setColor("#940000")
-           	.setTitle(":ping_pong: Pong!", "Response time: " + client.ping + "ms")
+           	.setTitle(":ping_pong: Pong!")
+	     	.setDescription("Response time: " + client.ping + "ms")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
             message.channel.send({embed});
