@@ -1,4 +1,4 @@
-client.login("MzQ3MjgzNzg3NzgyMDI5MzE0.DHipIA.ixmt1qYaaoU8-2hLNzmavWVwbuM")
+client.login("")
 
 var prefix = "px;"
 
