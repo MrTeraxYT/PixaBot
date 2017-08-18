@@ -1,6 +1,7 @@
 client.login("")
 
 var prefix = "px;"
+var version = "v0.2 Beta 1"
 
 client.on("message", function(message) {
 
