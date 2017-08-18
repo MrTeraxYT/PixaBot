@@ -14,7 +14,7 @@ client.on("message", function(message) {
     switch (args[0]) {
         //ping command
         case "ping":
-             const embed1 = new Discord.RichEmbed()
+             const embed = new Discord.RichEmbed()
            	.setColor("#940000")
            	.setTitle(":ping_pong: Pong!", "Response time: " + client.ping + "ms")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
