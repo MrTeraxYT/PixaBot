@@ -59,3 +59,4 @@ client.on("message", function(message) {
 		    message.channel.send("no but you can be jailed if you want (from kaiss)")
             break;		
 }
+})
