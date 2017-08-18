@@ -44,7 +44,7 @@ client.on("message", function(message) {
 		case "help":
             const embed = new Discord.RichEmbed()
 	        .setColor("#940000")
-            .setTitle("PixaBot Help Guide", "Here are my available commands. To execute one of my commands, my prefix is "px;"."")
+            .setTitle("PixaBot Help Guide", "Here are my available commands. To execute one of my commands, my prefix is `px;`.")
             .addField("General Commands", "Coming soon!")
             .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
