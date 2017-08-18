@@ -5,24 +5,37 @@
 A Discord bot that features games, image manipulation, moderation and music commands; written in JavaScript.
 
 ## Commands
-What's new in v0.1?
-- Ping: Test the ping status. (syntax: px;ping)
-- Timed Ping: Test the ping status with time measured. (syntax: px;pingtime)
-- Bot version: Prints up the bot's current version. (syntax: px;version)
-- Developers: Developer credits who made PixaBot. (syntax: px;developers)
-## coming soon
--kick:kicking members
--ban:for banning members
+To execute these commands, the command's prefix is `px;`.
+* **`ping`** - Connection test to the bot.
+* **`version`** - Displays the bot's current version.
+* **`about`** - Information about PixaBot.
 
-Stay tuned for PixaBot v0.2, to feature the help command
+### Coming soon
+* **`kick`** - Kicking a member out of the server.
+* **`ban`** - Ban member out of the server.
+* **`help`** - Displays PixaBot's Help Guide.
+
+## Version history
+### v0.2
+*This documentation is preliminary and is subjected to change.*
+-  **Help:** Displays PixaBot's Help Guide for the list of the commands. *(syntax: `px;help`)*
+
+### v0.1
+- **Ping:** Test the ping status. *(syntax: `px;ping`)*
+- **Timed Ping:** Test the ping status with time measured. *(syntax: `px;pingtime`)*
+- **Bot version:** Prints up the bot's current version. *(syntax: `px;version`)*
+- **Developers:** Developer credits who made PixaBot. *(syntax: `px;developers`)*
 
 ## Credits
-* [Jigs_Q#9714](https://github.com/heri0nd3) - Manager
+* [Jigs_Q#9714](https://github.com/heri0nd3) - Manager, interim co-developer
 
 ### Developers
 * [Kaiss#4599](https://github.com/OfficialRain) - Founder, lead developer
-* [Mr.Terax#9758](https://github.com/MrTeraxYT) - Co-developer
 * [Rain#8241](https://github.com/OfficialRain)
+* [Inkydink#9098](https://github.com/inkydink815)
+
+#### Former developers
+* [Mr.Terax#9758](https://github.com/MrTeraxYT) - Co-developer
 
 ## Discord server
 Join our bot's home server for hanging out our development team!
