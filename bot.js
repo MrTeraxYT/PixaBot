@@ -14,17 +14,20 @@ client.on("message", function(message) {
         //ping command
         case "ping":
              const embed = new Discord.RichEmbed()
-            .setColor("#940000")
-            .addField(":ping_pong: Pong!", "Response time:" + client.ping + "ms")
-            .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL)
-            .setTimestamp()
-            message.channel.send({embed});
-            break;
+           	.setColor("#940000")
+           	.setTitle(":ping_pong: Pong!", "Response time: " + client.ping + "ms")
+           	.setFooter("Requested by " + message.author.username, message.author.displayAvatarURL)
+           	.setTimestamp()
+		message.channel.send({embed});
+		break;
 	// about command
 	case "about":
-            message.channel.send("A Discord bot that features games, image manipulation, moderation and music commands; written in JavaScript Here are the developers: Rain , Kaiss, Inkydink, Yottabyte Inside")
-			break;
-	var version = "0.2 ";
+	     const embed = new Discord.RichEmbed()
+	        .setColor("#940000")
+  		.setTitle("About PixaBot", "PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
+           	.setFooter("Requested by " + message.author.username, message.author.displayAvatarURL)
+           	.setTimestamp()
+		message.channel.send({embed});
 	// version command
         case "version":
             message.channel.send("The current version of PixaBot is " + 0.2  + " beta 1")
