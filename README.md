@@ -5,7 +5,16 @@
 A Discord bot that features games, image manipulation, moderation and music commands; written in JavaScript.
 
 ## Commands
-* *Coming soon!*
+What's new in v0.1?
+- Ping: Test the ping status. (syntax: px;ping)
+- Timed Ping: Test the ping status with time measured. (syntax: px;pingtime)
+- Bot version: Prints up the bot's current version. (syntax: px;version)
+- Developers: Developer credits who made PixaBot. (syntax: px;developers)
+## coming soon
+-kick:kicking members
+-ban:for banning members
+
+Stay tuned for PixaBot v0.2, to feature the help command
 
 ## Credits
 * [Jigs_Q#9714](https://github.com/heri0nd3) - Manager
