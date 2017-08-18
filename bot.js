@@ -28,6 +28,7 @@ client.on("message", function(message) {
            	.setFooter("Requested by " + message.author.username, message.author.displayAvatarURL)
            	.setTimestamp()
 		message.channel.send({embed});
+		break;
 	// version command
         case "version":
             message.channel.send("The current version of PixaBot is " + 0.2  + " beta 1")
