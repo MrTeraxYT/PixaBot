@@ -14,17 +14,9 @@ client.on("message", function(message) {
         //ping command
         case "ping":
              const embed = new Discord.RichEmbed()
-
             .setColor("#940000")
             .addField(":ping_pong: Pong!", "Response time:" + client.ping + "ms")
             .setFooter("Requested by " + message.author.username, message.author.displayAvatarURL)
-
-            .setTitle("Ping")
-            .setAuthor(message.author.username, message.author.displayAvatarURL)
-            .setColor("#ac002d")
-            .setDescription("Your ping test results")
-            .addField("Pong!", "Response time: + ${Math.round(client.ping)} + ms")
-            .setFooter("Requested by" + message.author.username, message.author.displayAvatarURL)
             .setTimestamp()
             message.channel.send({embed});
             break;
