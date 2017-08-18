@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client()
 
-client.login("token")
+client.login("MzQ3MjgzNzg3NzgyMDI5MzE0.DHe_Tw.a1xP9u5dqfVL_2yHbDlHI8wlxPQ")
 
 var prefix = "px;"
 
@@ -16,15 +16,11 @@ client.on("message", function(message) {
     switch (args[0]) {
         //ping command
         case "ping":
-            message.channel.send(":signal_strength: Pong!")
-            break;
-
-        case "pingtime":
             message.channel.send(":signal_strength: Pong! Response Time: " + client.ping + "ms")
             break;
 
-	    case "developers":
-            message.channel.send("Here are the developers: Rain , Kaiss, Inkydink, Yottabyte Inside")
+	    case "about":
+            message.channel.send("A Discord bot that features games, image manipulation, moderation and music commands; written in JavaScript Here are the developers: Rain , Kaiss, Inkydink, Yottabyte Inside")
 			break;
 	var version = "0.2 ";
 	
@@ -44,5 +40,7 @@ client.on("message", function(message) {
 		    message.channel.send("kick: px;kick ban: px;ban and help command")
             break;
         case "CanIbeMod?":
-		    message.channel.send("no but you can be jailed if you want")
+		    message.channel.send("no but you can be jailed if you want (from kaiss)")
             break;		
+}
+})
