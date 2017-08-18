@@ -16,7 +16,15 @@ client.on("message", function(message) {
     switch (args[0]) {
         //ping command
         case "ping":
-            message.channel.send(":signal_strength: Pong! Response Time: " + client.ping + "ms")
+             const embed = new Discord.RichEmbed()
+            .setTitle("Ping")
+            .setAuthor(message.author.username, message.author.displayAvatarURL)
+            .setColor("#ac002d")
+            .setDescription("Your ping test results")
+            .addField("Pong!", "Response time:" + ${Math.round(client.ping)} + "ms")
+            .setFooter("Requested by" + message.author.username, message.author.displayAvatarURL)
+            .setTimestamp()
+            message.channel.send({embed});
             break;
 
 	    case "about":
