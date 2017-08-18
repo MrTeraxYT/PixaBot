@@ -26,7 +26,8 @@ client.on("message", function(message) {
         case "about":
             const embed = new Discord.RichEmbed()
 	        .setColor("#940000")
-            	.setTitle("About PixaBot", "PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
+            	.setTitle("About PixaBot")
+	    	.setDescription("PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
             message.channel.send({embed});
@@ -46,7 +47,8 @@ client.on("message", function(message) {
 	case "help":
             const embed = new Discord.RichEmbed()
 	        .setColor("#940000")
-            	.setTitle("PixaBot Help Guide", "Here are my available commands. To execute one of my commands, my prefix is `px;`.")
+            	.setTitle("PixaBot Help Guide")
+		.setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`.")
             	.addField("General Commands", "Coming soon!")
             	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
