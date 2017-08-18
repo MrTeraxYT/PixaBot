@@ -26,12 +26,12 @@ client.on("message", function(message) {
             .setTimestamp()
             message.channel.send({embed});
             break;
-
-	    case "about":
+	// about command
+	case "about":
             message.channel.send("A Discord bot that features games, image manipulation, moderation and music commands; written in JavaScript Here are the developers: Rain , Kaiss, Inkydink, Yottabyte Inside")
 			break;
 	var version = "0.2 ";
-	
+	// version command
         case "version":
             message.channel.send("The current version of PixaBot is " + 0.2  + " beta 1")
             break;
