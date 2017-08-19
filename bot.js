@@ -107,19 +107,19 @@ client.on("message", function(message) {
                 .setColor("#940000")
                 .setTitle("PixaBot Help Guide")
 		.setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`.")
-                .addField("General Commands", "Coming soon!")
+                .addField("General Commands", "ping\nabout\nversion", true)
+		.addField("Coming Soon", "px;kick\npx;ban", true)
+		.addField("Owner", "shutdown", true)
                 .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
                 .setTimestamp()
                 message.channel.send({embed});
             break;
-        case "coming soon":
-            message.channel.send("kick: px;kick ban: px;ban and help command")
-            break;
         case "CanIbeMod?":
-            message.channel.send("no but you can be jailed if you want (from kaiss)")
+            message.channel.send("No, but you can be jailed if you want.")
             break;		
         default:
-            haveMatched = false             
+            haveMatched = false
+	    message.channel.send("Unknown command.")
 }
 if (haveMatched){
     console.log(`[Command] ${message.author.id}/${message.author.username} (${message.content})`)
