@@ -9,25 +9,26 @@ var prefix = "px;"
 var version = "v0.2 Beta 1"
 
 client.on("ready", () => {
-console.log(ascii); 
-console.log(`Logged in as ${client.user.username}`);
-console.log("The bot is ready! Currently on:");
-console.log(client.guilds.size + " servers");
-console.log(client.channels.size + " channels")
-console.log("\n===============================\n")
+	console.log("\n===============================\n")
+	console.log(`PIXABOT`)
+	console.log(`Logged in as ${client.user.username}`);
+	console.log("The bot is ready! Currently on:");
+	console.log(client.guilds.size + " servers");
+	console.log(client.channels.size + " channels")
+	console.log("\n===============================\n")
 });
 
 client.on("guildCreate", guild => {
-  console.log(`New guild joined ${guild.name}`);
+	console.log(`New guild joined ${guild.name}`);
 });
 
 client.on("guildDelete", guild => {
-  console.log(`I have been removed from ${guild.name}`);
+	  console.log(`I have been removed from ${guild.name}`);
 });
 
 client.on("disconnected", function () {
-  console.log("The bot is now shut down.");
-  process.exit(1);
+	  console.log("The bot is now shut down.");
+	  process.exit(1);
 });
 
 client.on("message", function(message) {
