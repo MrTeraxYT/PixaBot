@@ -68,7 +68,7 @@ client.on("message", function(message) {
         case "version":
             var embed = new Discord.RichEmbed()
 	        .setColor("#940000")
-            .setAuthor("Version"
+            .setAuthor("Version")
 			.setDescription("The current version is " + ver + ".")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
