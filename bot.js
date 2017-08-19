@@ -59,7 +59,7 @@ client.on("message", function(message) {
         case "about":
             var embed = new Discord.RichEmbed()
 	        .setColor("#940000")
-            	.setTitle("About PixaBot"
+            	.setTitle("About PixaBot")
 		.setDescription("PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
