@@ -42,7 +42,6 @@ client.on("message", function(message) {
  
     switch (args[0]) {
         //ping command
-        
         case "ping":
             var m = message.channel.send("Ping...").then(m => {                 
             var embed = new Discord.RichEmbed()
@@ -59,8 +58,8 @@ client.on("message", function(message) {
         case "about":
             var embed = new Discord.RichEmbed()
 	        .setColor("#940000")
-            	.setTitle("About PixaBot")
-		.setDescription("PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
+            .setTitle("About PixaBot")
+			.setDescription("PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
             message.channel.send({embed});
@@ -69,7 +68,8 @@ client.on("message", function(message) {
         case "version":
             var embed = new Discord.RichEmbed()
 	        .setColor("#940000")
-            	.setTitle("Version", "The current version is **v0.2 beta 1**.")
+            .setAuthor("Version"
+			.setDescription("The current version is " + ver + ".")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
             message.channel.send({embed});
@@ -107,16 +107,16 @@ client.on("message", function(message) {
                 .setColor("#940000")
                 .setTitle("PixaBot Help Guide")
 		.setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`.")
-                .addField("General Commands", "ping\nabout\nversion", true)
-		.addField("Coming Soon", "px;kick\npx;ban", true)
-		.addField("Owner", "shutdown", true)
+                .addField("General Commands", "`ping` - Test a connection to PixaBot.\n`about` - Information about PixaBot.\n`version` - Displays the PixaBot's current version.", true)
+		.addField("Coming Soon", "`kick` - Kicks a member.\n`ban` - Bans the user out of this server.", true)
+		.addField("Owner", "`shutdown` - De-initialize the bot.", true)
                 .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
                 .setTimestamp()
                 message.channel.send({embed});
             break;
         case "CanIbeMod?":
             message.channel.send("No, but you can be jailed if you want.")
-            break;		
+            break;
         default:
             haveMatched = false
 	    message.channel.send("Unknown command.")
