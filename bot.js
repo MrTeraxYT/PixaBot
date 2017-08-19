@@ -105,7 +105,7 @@ client.on("message", function(message) {
         case "help":
                 var embed = new Discord.RichEmbed()
                 .setColor("#940000")
-                .setTitle("PixaBot Help Guide"
+                .setTitle("PixaBot Help Guide")
 		.setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`.")
                 .addField("General Commands", "Coming soon!")
                 .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
