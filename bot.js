@@ -1,20 +1,44 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
 
-const owner_id = "" //put your ID here. HOW TO GET AN ID : http://i.imgur.com/GhKpBMQ.gif
-client.login("") //put your bot token here, Not "secret".  The secret is not the token.
+// Get authentication data
+try {
+	var AuthDetails = require("./auth.json");
+} catch (e){
+	console.log("Please create an auth.json like auth.json.example with a bot token or an email and password.\n"+e.stack);
+	process.exit();
+}
 
+if(AuthDetails.bot_token){
+	client.login(AuthDetails.bot_token);
+    var bot_token = AuthDetails.bot_token;
+}
 
-var prefix = "px;"
+if(AuthDetails.owner_id){
+	var owner_id = AuthDetails.owner_id
+} else {
+	console.log("No owner id set in auth.json!");
+}
+
+if(AuthDetails.prefix){
+	var prefix = AuthDetails.prefix
+} else {
+	console.log("No prefix set in auth.json!");
+}
+
 var version = "v0.2 Beta 1"
 
 client.on("ready", () => {
+    client.fetchUser(owner_id)
+    var owner = client.users.get(owner_id);  
 	console.log("\n===============================\n")
-	console.log(`PIXABOT`)
-	console.log(`Logged in as ${client.user.username}`);
-	console.log("The bot is ready! Currently on:");
-	console.log(client.guilds.size + " servers");
-	console.log(client.channels.size + " channels")
+	console.log(`PIXABOT`) 
+    console.log(`Logged in as ${client.user.username}`);
+    console.log("The bot is ready! Currently on:");
+    console.log(client.guilds.size + " servers");
+    console.log(client.channels.size + " channels");
+    console.log("Current prefix: " + prefix);
+    console.log("Owner: " + owner.username + "#" + owner.discriminator);
 	console.log("\n===============================\n")
 });
 
