@@ -18,7 +18,10 @@ To execute these commands, the command's prefix is `px;`.
 ## Version history
 ### v0.2
 *This documentation is preliminary and is subjected to change.*
--  **Help:** Displays PixaBot's Help Guide for the list of the commands. *(syntax: `px;help`)*
+- **Embed texts:** Certain commands now feature the embedded rich text layout.
+- **Removed `pingtime`:** It is merged to the `ping` command.
+- **`developers` to `about`**: The bot's credits are now expended to an information about PixaBot. *(syntax: `px;about`)*
+- **Help:** Displays PixaBot's Help Guide for the list of the commands. *(syntax: `px;help`)*
 
 ### v0.1
 - **Ping:** Test the ping status. *(syntax: `px;ping`)*
