@@ -9,18 +9,6 @@ var prefix = "px;"
 var version = "v0.2 Beta 1"
 
 client.on("ready", () => {
-
-ascii = "\n==============================="
-ascii +=  "\n  _____ _           ____        _   "
-ascii += "\n |  __ (_)         |  _ \\      | |  "
-ascii += "\n | |__) |__  ____ _| |_) | ___ | |_ "
-ascii += "\n |  ___/ \\ \\/ / _` |  _ < / _ \\| __|"
-ascii += "\n | |   | |>  < (_| | |_) | (_) | |_ "
-ascii += "\n |_|   |_/_/\\_\\__,_|____/ \\___/ \\__|"
-ascii += "\n\n===============================\n"                                    
-                                    
-                                  
-                                    
 console.log(ascii); 
 console.log(`Logged in as ${client.user.username}`);
 console.log("The bot is ready! Currently on:");
