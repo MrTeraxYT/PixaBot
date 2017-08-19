@@ -23,7 +23,7 @@ ascii += "\n\n===============================\n"
                                     
 console.log(ascii); 
 console.log(`Logged in as ${client.user.username}`);
-console.log("Ready to begin! Currently on :");
+console.log("The bot is ready! Currently on:");
 console.log(client.guilds.size + " servers");
 console.log(client.channels.size + " channels")
 console.log("\n===============================\n")
@@ -38,7 +38,7 @@ client.on("guildDelete", guild => {
 });
 
 client.on("disconnected", function () {
-  console.log("Disconnected!");
+  console.log("The bot is now shut down.");
   process.exit(1);
 });
 
@@ -59,7 +59,7 @@ client.on("message", function(message) {
             var embed = new Discord.RichEmbed()
            	.setColor("#940000")
            	.setAuthor("Pong!", "https://image.noelshack.com/fichiers/2017/33/6/1503111758-371886a66446c46e66e9435158468720.png")
-	     	.setDescription(`Response time : ${m.createdTimestamp - message.createdTimestamp}ms`)  
+	     	.setDescription(`Response time: ${m.createdTimestamp - message.createdTimestamp}ms`)  
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp() 
             m.delete()
@@ -70,14 +70,19 @@ client.on("message", function(message) {
         case "about":
             var embed = new Discord.RichEmbed()
 	        .setColor("#940000")
-            .setTitle("About PixaBot", "PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
+            	.setTitle("About PixaBot", "PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
             message.channel.send({embed});
             break;
         // version command
         case "version":
-            message.channel.send("The current version of PixaBot is " + 0.2  + " beta 1")
+            var embed = new Discord.RichEmbed()
+	        .setColor("#940000")
+            	.setTitle("Version", "The current version is **v0.2 beta 1**.")
+           	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
+           	.setTimestamp()
+            message.channel.send({embed});
             break;
         // kick command
         case "kick":
@@ -100,7 +105,7 @@ client.on("message", function(message) {
                 client.destroy((err) => {
                         console.log(err);
                     });
-                console.log("Disconnected via shutdown!");
+                console.log("The bot is now shut down.");
                 setTimeout(function(){
                     process.exit(0);  
                 }, 2000)
