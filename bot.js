@@ -67,10 +67,10 @@ client.on("message", function(message) {
     switch (args[0]) {
         //ping command
         case "ping":
-            var m = message.channel.send(":hourglass: *Testing connectivity…*").then(m => {                 
+            var m = message.channel.send("Ping...").then(m => {                 
             var embed = new Discord.RichEmbed()
            	.setColor("#940000")
-           	.setAuthor("Pong!", "https://cdn.discordapp.com/attachments/347288279357456387/348647441815306241/ping.png")
+           	.setAuthor("Pong!", "https://image.noelshack.com/fichiers/2017/33/6/1503111758-371886a66446c46e66e9435158468720.png")
 	     	.setDescription(`Response time: ${m.createdTimestamp - message.createdTimestamp}ms`)  
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp() 
@@ -82,8 +82,8 @@ client.on("message", function(message) {
         case "about":
             var embed = new Discord.RichEmbed()
 	        .setColor("#940000")
-            	.setAuthor("About PixaBot", "https://cdn.discordapp.com/attachments/347288279357456387/348643671002054657/about.png")
-		.setDescription("PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
+            .setTitle("About PixaBot")
+			.setDescription("PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
             message.channel.send({embed});
@@ -92,8 +92,8 @@ client.on("message", function(message) {
         case "version":
             var embed = new Discord.RichEmbed()
 	        .setColor("#940000")
-            	.setAuthor("Version", "https://cdn.discordapp.com/attachments/347288279357456387/348642213582077953/ver.png")
-		.setDescription("The current version is " + ver + ".")
+            .setAuthor("Version")
+			.setDescription("The current version is " + "0.2" + ".")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
             message.channel.send({embed});
@@ -106,15 +106,13 @@ client.on("message", function(message) {
         case "ban":
             message.channel.send("Coming Soon!")
             break;
-	// shutdown command
         case "shutdown":
             if (message.author.id != owner_id) {
                 return;
             } else {
                 var embed = new Discord.RichEmbed()
                 .setColor("#940000")
-                    .setAuthor("Shuting down…", "https://cdn.discordapp.com/attachments/347288279357456387/348594144790183937/power.png")
-		    .setDescription("Please wait while the bot system is currently shutting down.")
+                    .setTitle("Shuting down...", "Please wait.")
                     .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
                     .setTimestamp()
                 message.channel.send({embed});
@@ -127,27 +125,43 @@ client.on("message", function(message) {
                 }, 2000)
             }
             break;
-                //exit node.js without an error
-	// help command
+                //exit node.js without an error                      
         case "help":
                 var embed = new Discord.RichEmbed()
                 .setColor("#940000")
-                .setAuthor("PixaBot Help Guide", "https://cdn.discordapp.com/attachments/347288279357456387/348643679373754369/help.png")
+                .setTitle("PixaBot Help Guide")
 		.setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`.")
                 .addField("General Commands", "`ping` - Test a connection to PixaBot.\n`about` - Information about PixaBot.\n`version` - Displays the PixaBot's current version.", true)
-		.addField("Easter Eggs", "`canibeamod` - Are you applying for a mod?", true) 
 		.addField("Coming Soon", "`kick` - Kicks a member.\n`ban` - Bans the user out of this server.", true)
 		.addField("Owner", "`shutdown` - De-initialize the bot.", true)
+		.addField("fun commands"," `say - you just have to type what you want it to say.\n`CanIbeMod? - tells you if you can be a staff member.", true)
                 .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
                 .setTimestamp()
                 message.channel.send({embed});
             break;
-        case "canibeamod":
+        case "CanIbeMod?":
             message.channel.send("No, but you can be jailed if you want.")
             break;
+			const Discord = require('discord.js');
+	    case "say":
+	try {
+		if(message.author.id ==  ) {
+		message.delete();
+		if(!args[0]) {
+			message.channel.send("**Error:**")
+		} else {
+			message.channel.send(message.content.substr(7));
+		}
+		} else {
+			message.channel.send("can't say it atm")
+		}
+	} catch(err) {
+		message.channel.send(error)
+	}
+	     break;
         default:
             haveMatched = false
-	    message.channel.send(":x: **Unknown command specified. Execute `px;help` to see my list of available commands.**")
+	    message.channel.send("Unknown command.")
 }
 if (haveMatched){
     console.log(`[Command] ${message.author.id}/${message.author.username} (${message.content})`)
