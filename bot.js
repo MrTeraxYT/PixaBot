@@ -84,7 +84,7 @@ client.on("message", function(message) {
 	        .setColor("#940000")
             .setAuthor("About PixaBot", "https://cdn.discordapp.com/attachments/347288279357456387/348643671002054657/about.png")
 			.setDescription("PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
-			.setThumbnail("https://cdn.discordapp.com/avatars/347283787782029314/676c87a65e337e91e2781f04ec6aa879.png?size=2048")
+			.setThumbnail("https://media.discordapp.net/attachments/347288279357456387/348940216242929664/Untitled.jpg")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
             message.channel.send({embed});
