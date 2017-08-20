@@ -147,7 +147,7 @@ client.on("message", function(message) {
             break;
         default:
             haveMatched = false
-	    message.channel.send("Unknown command.")
+	    message.channel.send(":x: **Unknown command specified. Execute `px;help` to see my list of available commands.**")
 }
 if (haveMatched){
     console.log(`[Command] ${message.author.id}/${message.author.username} (${message.content})`)
