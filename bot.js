@@ -67,10 +67,10 @@ client.on("message", function(message) {
     switch (args[0]) {
         //ping command
         case "ping":
-            var m = message.channel.send("Ping...").then(m => {                 
+            var m = message.channel.send("Testing connectivity…").then(m => {                 
             var embed = new Discord.RichEmbed()
            	.setColor("#940000")
-           	.setAuthor("Pong!", "https://image.noelshack.com/fichiers/2017/33/6/1503111758-371886a66446c46e66e9435158468720.png")
+           	.setAuthor("Pong!", "https://cdn.discordapp.com/attachments/347288279357456387/348588054060990465/pingpong.png")
 	     	.setDescription(`Response time: ${m.createdTimestamp - message.createdTimestamp}ms`)  
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp() 
@@ -82,8 +82,8 @@ client.on("message", function(message) {
         case "about":
             var embed = new Discord.RichEmbed()
 	        .setColor("#940000")
-            .setTitle("About PixaBot")
-			.setDescription("PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
+            	.setTitle("About PixaBot")
+		.setDescription("PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
             message.channel.send({embed});
@@ -112,7 +112,8 @@ client.on("message", function(message) {
             } else {
                 var embed = new Discord.RichEmbed()
                 .setColor("#940000")
-                    .setTitle("Shuting down...", "Please wait.")
+                    .setAuthor("Shuting down…", "https://cdn.discordapp.com/attachments/347288279357456387/348594144790183937/power.png")
+		    .setDescription("Please wait while the bot system is currently shutting down.")
                     .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
                     .setTimestamp()
                 message.channel.send({embed});
