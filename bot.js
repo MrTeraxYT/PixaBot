@@ -153,7 +153,7 @@ client.on("message", function(message) {
 					if(!args[0]) {
 						message.channel.send("**Error:**")
 					} else {
-							message.channel.send(message.content.substr(7));
+							message.channel.send(message.content.replace(prefix + "say ", ''));
 					message.delete();
 							}
 					} catch(err) {
