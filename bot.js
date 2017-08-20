@@ -26,7 +26,7 @@ if(AuthDetails.prefix){
 	console.log("No prefix set in auth.json!");
 }
 
-var version = "v0.2 Beta 1"
+var version = "v0.2"
 
 client.on("ready", () => {
     client.fetchUser(owner_id)
