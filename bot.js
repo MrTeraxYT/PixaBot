@@ -162,7 +162,30 @@ client.on("message", function(message) {
 						message.channel.send(error)
 					}
 			break;
-        default:
+			case "8ball":
+			if(!args[0]) {
+		message.channel.send("Go ahead, ask me anything.")
+	} else {
+	switch (Math.floor(Math.random() * 100) % 7) {
+					case 0:
+					message.reply("Yes");
+					break;
+					case 1:
+					message.reply("no");
+					break;
+					case 2:
+					message.reply("absoulutly no");
+					break;
+					case 3:
+					message.reply("Maybe");
+					break;
+					case 4:
+					message.reply("can be true");
+					break;
+		}
+	}
+break;
+	 default:
         haveMatched = false
 	    message.channel.send(":x: *Unknown command specified. Execute `px;help` to see my list of available commands.*".replace('px;', prefix))
 }
