@@ -93,7 +93,7 @@ client.on("message", function(message) {
             var embed = new Discord.RichEmbed()
 	        .setColor("#940000")
             	.setAuthor("Version", "https://cdn.discordapp.com/attachments/347288279357456387/348642213582077953/ver.png")
-		.setDescription("The current version is " + "0.2" + ".")
+		.setDescription("The current version is " + version + ".")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
             message.channel.send({embed});
@@ -162,7 +162,7 @@ client.on("message", function(message) {
 			break;
         default:
         haveMatched = false
-	    message.channel.send(":x: **Unknown command specified. Execute `px;help` to see my list of available commands.**".replace('px;', prefix))
+	    message.channel.send(":x: *Unknown command specified. Execute `px;help` to see my list of available commands.*".replace('px;', prefix))
 }
 if (haveMatched){
     console.log(`[Command] ${message.author.id}/${message.author.username} (${message.content})`)
