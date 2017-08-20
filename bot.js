@@ -67,10 +67,10 @@ client.on("message", function(message) {
     switch (args[0]) {
         //ping command
         case "ping":
-            var m = message.channel.send("Testing connectivity…").then(m => {                 
+            var m = message.channel.send(":hourglass: *Testing connectivity…*").then(m => {                 
             var embed = new Discord.RichEmbed()
            	.setColor("#940000")
-           	.setAuthor("Pong!", "https://cdn.discordapp.com/attachments/347288279357456387/348588054060990465/pingpong.png")
+           	.setAuthor("Pong!", "https://cdn.discordapp.com/attachments/347288279357456387/348647441815306241/ping.png")
 	     	.setDescription(`Response time: ${m.createdTimestamp - message.createdTimestamp}ms`)  
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp() 
@@ -82,7 +82,7 @@ client.on("message", function(message) {
         case "about":
             var embed = new Discord.RichEmbed()
 	        .setColor("#940000")
-            	.setTitle("About PixaBot")
+            	.setAuthor("About PixaBot", "https://cdn.discordapp.com/attachments/347288279357456387/348643671002054657/about.png")
 		.setDescription("PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
@@ -92,8 +92,8 @@ client.on("message", function(message) {
         case "version":
             var embed = new Discord.RichEmbed()
 	        .setColor("#940000")
-            .setAuthor("Version")
-			.setDescription("The current version is " + ver + ".")
+            	.setAuthor("Version", "https://cdn.discordapp.com/attachments/347288279357456387/348642213582077953/ver.png")
+		.setDescription("The current version is " + ver + ".")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
             message.channel.send({embed});
@@ -106,6 +106,7 @@ client.on("message", function(message) {
         case "ban":
             message.channel.send("Coming Soon!")
             break;
+	// shutdown command
         case "shutdown":
             if (message.author.id != owner_id) {
                 return;
@@ -126,20 +127,22 @@ client.on("message", function(message) {
                 }, 2000)
             }
             break;
-                //exit node.js without an error                      
+                //exit node.js without an error
+	// help command
         case "help":
                 var embed = new Discord.RichEmbed()
                 .setColor("#940000")
-                .setTitle("PixaBot Help Guide")
+                .setAuthor("PixaBot Help Guide", "https://cdn.discordapp.com/attachments/347288279357456387/348643679373754369/help.png")
 		.setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`.")
                 .addField("General Commands", "`ping` - Test a connection to PixaBot.\n`about` - Information about PixaBot.\n`version` - Displays the PixaBot's current version.", true)
+		.addField("Easter Eggs", "`canibeamod` - Are you applying for a mod?", true) 
 		.addField("Coming Soon", "`kick` - Kicks a member.\n`ban` - Bans the user out of this server.", true)
 		.addField("Owner", "`shutdown` - De-initialize the bot.", true)
                 .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
                 .setTimestamp()
                 message.channel.send({embed});
             break;
-        case "CanIbeMod?":
+        case "canibeamod":
             message.channel.send("No, but you can be jailed if you want.")
             break;
         default:
