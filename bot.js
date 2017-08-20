@@ -82,8 +82,9 @@ client.on("message", function(message) {
         case "about":
             var embed = new Discord.RichEmbed()
 	        .setColor("#940000")
-            	.setAuthor("About PixaBot", "https://cdn.discordapp.com/attachments/347288279357456387/348643671002054657/about.png")
-		.setDescription("PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
+            .setAuthor("About PixaBot", "https://cdn.discordapp.com/attachments/347288279357456387/348643671002054657/about.png")
+			.setDescription("PixaBot is a Discord bot that features games, image manipulation, moderation and music commands written in JavaScript.")
+			.setThumbnail("https://cdn.discordapp.com/avatars/347283787782029314/676c87a65e337e91e2781f04ec6aa879.png?size=2048")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
             message.channel.send({embed});
@@ -137,6 +138,7 @@ client.on("message", function(message) {
                 .addField("General Commands", "`ping` - Test a connection to PixaBot.\n`about` - Information about PixaBot.\n`version` - Displays the PixaBot's current version.", true)
 				.addField("Fun Commands", "`say` - Say something as a bot!")
 				.addField("Moderation Commands", "`kick` - Kicks a member.\n`ban` - Bans the user out of this server.", true)
+				.addBlankField(true)
 				.addField("Easter Eggs", "`canibeamod` - Are you applying for a mod?", true) 
                 .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
                 .setTimestamp()                
