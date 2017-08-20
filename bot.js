@@ -133,31 +133,27 @@ client.on("message", function(message) {
                 var embed = new Discord.RichEmbed()
                 .setColor("#940000")
                 .setAuthor("PixaBot Help Guide", "https://cdn.discordapp.com/attachments/347288279357456387/348643679373754369/help.png")
-				.setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`.")
+				.setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`".replace('px;', prefix))
                 .addField("General Commands", "`ping` - Test a connection to PixaBot.\n`about` - Information about PixaBot.\n`version` - Displays the PixaBot's current version.", true)
 				.addField("Fun Commands", "`say` - Say something as a bot!")
 				.addField("Moderation Commands", "`kick` - Kicks a member.\n`ban` - Bans the user out of this server.", true)
 				.addField("Easter Eggs", "`canibeamod` - Are you applying for a mod?", true) 
-				.addField("Commands for the Bot Owner", "`shutdown` - De-initialize the bot.", true)
                 .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
-                .setTimestamp()
+                .setTimestamp()                
+                if (message.author.id == owner_id) {    
+                    embed.addField("Commands for the Bot Owner", "`shutdown` - De-initialize the bot.", true)
+                }
                 message.channel.send({embed});
             break;
         case "canibeamod":
             message.channel.send("No, but you can be jailed if you want.")
             break;
-		const Discord = require('discord.js');
 	    case "say":
 			try {
-					if(message.author.id ==  ) {
-						message.delete();
 					if(!args[0]) {
 						message.channel.send("**Error:**")
 					} else {
 							message.channel.send(message.content.substr(7));
-							}
-					} else {
-							message.channel.send("can't say it atm")
 							}
 					} catch(err) {
 						message.channel.send(error)
@@ -165,7 +161,7 @@ client.on("message", function(message) {
 			break;
         default:
         haveMatched = false
-	    message.channel.send(":x: **Unknown command specified. Execute `px;help` to see my list of available commands.**")
+	    message.channel.send(":x: **Unknown command specified. Execute `px;help` to see my list of available commands.**".replace('px;', prefix))
 }
 if (haveMatched){
     console.log(`[Command] ${message.author.id}/${message.author.username} (${message.content})`)
