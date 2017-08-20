@@ -164,7 +164,7 @@ client.on("message", function(message) {
 			break;
 			case "8ball":
 			if(!args[0]) {
-		message.channel.send("Go ahead, ask me anything.")
+		message.channel.send("type something")
 	} else {
 	switch (Math.floor(Math.random() * 100) % 7) {
 					case 0:
