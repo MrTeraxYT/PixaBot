@@ -93,7 +93,7 @@ client.on("message", function(message) {
             var embed = new Discord.RichEmbed()
 	        .setColor("#940000")
             	.setAuthor("Version", "https://cdn.discordapp.com/attachments/347288279357456387/348642213582077953/ver.png")
-		.setDescription("The current version is " + "0.2" + ".")
+		.setDescription("The current version is " + version + ".")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
             message.channel.send({embed});
