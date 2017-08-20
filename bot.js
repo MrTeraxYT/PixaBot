@@ -93,7 +93,7 @@ client.on("message", function(message) {
             var embed = new Discord.RichEmbed()
 	        .setColor("#940000")
             	.setAuthor("Version", "https://cdn.discordapp.com/attachments/347288279357456387/348642213582077953/ver.png")
-		.setDescription("The current version is " + ver + ".")
+		.setDescription("The current version is " + "0.2" + ".")
            	.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
            	.setTimestamp()
             message.channel.send({embed});
@@ -154,6 +154,7 @@ client.on("message", function(message) {
 						message.channel.send("**Error:**")
 					} else {
 							message.channel.send(message.content.substr(7));
+					message.delete();
 							}
 					} catch(err) {
 						message.channel.send(error)
