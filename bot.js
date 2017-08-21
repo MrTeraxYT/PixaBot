@@ -160,29 +160,30 @@ client.on("message", function(message) {
 			break;
 			case "8ball":
 			if(!args[0]) {
-		message.channel.send("type something")
+		message.channel.send("Go ahead, ask it anything.")
 	} else {
 	switch (Math.floor(Math.random() * 100) % 7) {
 					case 0:
-					message.reply("Yes");
+					message.reply("Yes.");
 					break;
 					case 1:
-					message.reply("no");
+					message.reply("No.");
 					break;
 					case 2:
-					message.reply("absoulutly no");
+					message.reply("Absolutely not.");
 					break;
 					case 3:
-					message.reply("Maybe");
+					message.reply("Maybe.");
 					break;
 					case 4:
-					message.reply("can be true");
+					message.reply("It could be true.");
 					break;
 		}
 	}
 	break;
 		case "piko":
-			message.channel.send("Here is piko its an original anime character. Created By: YottabyteInside a.k.a jigs,https://cdn.discordapp.com/attachments/347282801021943811/348985242385907714/pixa_by_exjageroo-dbka7oa.png ")
+		    message.reply("Sent a DM with our mascot, Piko.");
+			message.author.send("Here's the mascot, Piko, made by Yottabyte Inside, also known as Jigs:\n https://cdn.discordapp.com/attachments/347282801021943811/348985242385907714/pixa_by_exjageroo-dbka7oa.png ")
 		break;
 	 default:
         haveMatched = false
