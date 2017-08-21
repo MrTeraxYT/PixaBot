@@ -114,7 +114,7 @@ client.on("message", function(message) {
             } else {
                 var embed = new Discord.RichEmbed()
                 .setColor("#940000")
-                    .setAuthor("Shuting down…", "https://cdn.discordapp.com/attachments/347288279357456387/348594144790183937/power.png")
+                    .setAuthor("Shutting down…", "https://cdn.discordapp.com/attachments/347288279357456387/348594144790183937/power.png")
 		    .setDescription("Please wait while the bot system is currently shutting down.")
                     .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
                     .setTimestamp()
@@ -134,21 +134,16 @@ client.on("message", function(message) {
                 var embed = new Discord.RichEmbed()
                 .setColor("#940000")
                 .setAuthor("PixaBot Help Guide", "https://cdn.discordapp.com/attachments/347288279357456387/348643679373754369/help.png")
-				.setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`".replace('px;', prefix))
-                .addField("General Commands", "`ping` - Test a connection to PixaBot.\n`about` - Information about PixaBot.\n`version` - Displays the PixaBot's current version.", true)
-				.addField("Fun Commands", "`say` - Say something as a bot!")
-				.addField("Moderation Commands", "`kick` - Kicks a member.\n`ban` - Bans the user out of this server.", true)
-				.addBlankField(true)
-				.addField("Easter Eggs", "`canibeamod` - Are you applying for a mod?", true) 
+				.setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`.".replace('px;', prefix))
+                .addField("General Commands", "`about` - Information about PixaBot.\n`ping` - Test a connection to PixaBot.\n`version` - Displays the PixaBot's current version.", true)
+				.addField("Fun Commands", "`8ball - Ask a question to a bot, and what does the bot say…?\n`piko` - Shows the picture of Piko Kugihara, an anime original character serves as a mascot of PixaBot.\n`say` - Say something as a bot!")
+				.addField("Moderation Commands", "`ban` - Bans the user out of this server.\n`kick` - Kicks a member.", true)
                 .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
                 .setTimestamp()                
                 if (message.author.id == owner_id) {    
                     embed.addField("Commands for the Bot Owner", "`shutdown` - De-initialize the bot.", true)
                 }
                 message.channel.send({embed});
-            break;
-        case "canibeamod":
-            message.channel.send("No, but you can be jailed if you want.")
             break;
 	    case "say":
 			try {
