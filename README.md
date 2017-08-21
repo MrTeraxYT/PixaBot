@@ -6,6 +6,7 @@ A Discord bot that features games, image manipulation, moderation and music comm
 
 ## Commands
 To execute these commands, the command's prefix is `px;`.
+***Parameters:** < > - required; [ ] - optional
 * **`ping`** - Connection test to the bot.
 * **`version`** - Displays the bot's current version.
 * **`about`** - Information about PixaBot.
@@ -22,8 +23,10 @@ To execute these commands, the command's prefix is `px;`.
 - **Removed `pingtime`:** It is merged to the `ping` command.
 - **`developers` to `about`**: The bot's credits are now expended to an information about PixaBot. *(syntax: `px;about`)*
 - **Help:** Displays PixaBot's Help Guide for the list of the commands. *(syntax: `px;help`)*
-- **Say:** Say something as a bot! *(syntax: `px;say`)*
-- **8ball:** Ask a random question… if you are in luck. *(syntax: `px;8ball`)*
+- **Say:** Say something as a bot! *(syntax: `px;say <message>`)*
+- **8ball:** Ask a random question… if you are in luck. *(syntax: `px;8ball <question>`)*
+- **Meet Piko-chan!:** Our bot's anime OC mascot. *(syntax: `px;piko`)*
+- **Kick and ban all-in-one:** These two commands are merged with the `do` command. *(syntax: `px;do`)*
 
 ### v0.1
 - **Ping:** Test the ping status. *(syntax: `px;ping`)*
