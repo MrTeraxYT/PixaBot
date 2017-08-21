@@ -136,7 +136,7 @@ client.on("message", function(message) {
                 .setAuthor("PixaBot Help Guide", "https://cdn.discordapp.com/attachments/347288279357456387/348643679373754369/help.png")
 				.setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`.".replace('px;', prefix))
                 .addField("General Commands", "`about` - Information about PixaBot.\n`ping` - Test a connection to PixaBot.\n`version` - Displays the PixaBot's current version.", true)
-				.addField("Fun Commands", "`8ball - Ask a question to a bot, and what does the bot say…?\n`piko` - Shows the picture of Piko Kugihara, an anime original character serves as a mascot of PixaBot.\n`say` - Say something as a bot!")
+				.addField("Fun Commands", "`8ball` - Ask a question to a bot, and what does the bot say…?\n`piko` - Shows the picture of Piko Kugihara, an anime original character serves as a mascot of PixaBot.\n`say` - Say something as a bot!")
 				.addField("Moderation Commands", "`ban` - Bans the user out of this server.\n`kick` - Kicks a member.", true)
                 .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
                 .setTimestamp()                
