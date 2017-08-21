@@ -180,6 +180,9 @@ client.on("message", function(message) {
 		}
 	}
 break;
+case "piko":
+message.channel.send("Here is piko its an original anime character. Created By: YottabyteInside a.k.a jigs,https://cdn.discordapp.com/attachments/347282801021943811/348985242385907714/pixa_by_exjageroo-dbka7oa.png ")
+break;
 	 default:
         haveMatched = false
 	    message.channel.send(":x: *Unknown command specified. Execute `px;help` to see my list of available commands.*".replace('px;', prefix))
