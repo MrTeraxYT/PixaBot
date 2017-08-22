@@ -198,7 +198,7 @@ client.on("message", function(message) {
 				.setColor("#940000")
 				.setAuthor("Unknown Command", "https://cdn.discordapp.com/attachments/347288279357456387/349278178499493888/unknowncmd.png")
 				.setTitle("The specified command that you are trying to execute is invalid.")
-				.setDescription("Use `px;help` to view my available comands.".replace('px;', prefix))
+				.setDescription("Use `px;help` to view my available commands.".replace('px;', prefix))
 				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 				.setTimestamp()                
             message.channel.send({embed})
