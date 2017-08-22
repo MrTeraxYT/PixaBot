@@ -174,7 +174,7 @@ client.on("message", function(message) {
                 message.channel.send("Go ahead, ask it anything.")
                 break
             } else {        
-                var choices = ["Yes.", "No.", "Maybe.", "It could be true"]
+                var choices = ["Yes.", "No.", "Maybe.", "It could be true."]
                 var rand = choices[Math.floor(Math.random() * choices.length)];                    
                 message.channel.send(rand)  
                 break
