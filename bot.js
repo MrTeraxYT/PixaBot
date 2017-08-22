@@ -231,7 +231,6 @@ var guild = msg.guild
 	  .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 	  .setTimestamp()
 	  .setColor("#940000")
-	  .setAuthor(msg.author.username, msg.author.displayAvatarURL)
 	  .addField("📥 Input", args.join(' '))
 	  .addField("📤 Output", "```x1\n" + clean(evaled) + "```")
       message.channel.send({embed});
