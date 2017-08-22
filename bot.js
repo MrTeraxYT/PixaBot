@@ -38,7 +38,7 @@ client.on("ready", () => {
     console.log(client.guilds.size + " servers");
     console.log(client.channels.size + " channels");
     console.log("Current prefix: " + prefix);
-    console.log("Owner: " + owner.username + "#" + owner.discriminator);
+    console.log("Owner: " + owner.tag);
 	console.log("\n===============================\n")
 });
 
@@ -201,6 +201,47 @@ client.on("message", function(message) {
 				.setDescription("Use `px;help` to view my available comands.".replace('px;', prefix))
             message.channel.send({embed})
 }
+	//eval command
+	case "eval":
+	if (message.author.id != owner_id && message.author.id != AuthDetails.rain && message.author.id != AuthDetails.yottabyte && message.author.id != AuthDetails.terax) return;
+	const clean = text => {
+  if (typeof(text) === "string")
+    return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+  else
+      return text;
+}
+var guild = msg.guild
+    try {
+      const code = args.join(" ");
+      let evaled = eval(code);
+
+      if (typeof evaled !== "string")
+        evaled = require("util").inspect(evaled);
+	  message.delete()
+	  if (!code) return msg.author.send("Eval failed! Please use Arguments!");
+	  const embed = new Discord.RichEmbed()
+	  .setTitle("Eval")
+	  .setTimestamp()
+	  .setColor("#01DF01")
+	  .setAuthor(msg.author.username, msg.author.displayAvatarURL)
+	  .addField("Input 📥", args.join(' '))
+	  .addField("Output 📤", "```x1\n" + clean(evaled) + "```")
+      message.channel.send({embed});
+	  console.log("========================================================================================\nEVAL RESULTS\nINPUT:\n" + args.join(' ') + "\nOUTPUT:\n" + clean(evaled) + "\n========================================================================================\n");
+    } catch (err) {
+	message.delete()
+	  const embed = new Discord.RichEmbed()
+	  .setTitle("Eval")
+	  .setTimestamp()
+	  .setColor("#DF0101")
+	  .setAuthor(msg.author.username, msg.author.displayAvatarURL)
+	  .setDescription("ERROR")
+	  .addField("Input 📥", args.join(' '))
+	  .addField("Output 📤", "```x1\n" + clean(err) + "```")
+      msg.author.send({embed});
+      console.log("========================================================================================\nEVAL RESULTS\nERROR\n\nINPUT:\n" + args.join(' ') + "\nOUTPUT:\n" + clean(err) + "\n========================================================================================\n");
+    }
+  }
 if (haveMatched){
     console.log(`[Command] ${message.author.id}/${message.author.username} (${message.content})`)
 }
