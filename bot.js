@@ -191,19 +191,11 @@ client.on("message", function(message) {
 		    message.reply({embed});
             message.author.send("Here's the mascot, Piko, an anime OC made by Yottabyte Inside, also known as Jigs.", { files: [ 'https://cdn.discordapp.com/attachments/347282801021943811/348985242385907714/pixa_by_exjageroo-dbka7oa.png' ] });
             break;
-        // command that is invalid.
-        default:
-            haveMatched = false
-            var embed = new Discord.RichEmbed()
-				.setColor("#940000")
-				.setAuthor("Unknown Command", "https://cdn.discordapp.com/attachments/347288279357456387/349278178499493888/unknowncmd.png")
-				.setTitle("The specified command that you are trying to execute is invalid.")
-				.setDescription("Use `px;help` to view my available comands.".replace('px;', prefix))
-            message.channel.send({embed})
 }
 	//eval command
 	if (message.content.startsWith(prefix + "eval")) {
-	let msg = message
+		let msg = message
+		let bot = client
 	let args = msg.content.split(' ')
         let variable = args.shift()
 	if (message.author.id != owner_id && message.author.id != AuthDetails.rain && message.author.id != AuthDetails.yottabyte && message.author.id != AuthDetails.terax) return;
