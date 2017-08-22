@@ -142,7 +142,7 @@ client.on("message", function(message) {
             .setColor("#940000")
             .setAuthor("PixaBot Help Guide", "https://cdn.discordapp.com/attachments/347288279357456387/348643679373754369/help.png")
             .setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`.".replace('px;', prefix))
-            .addField("General Commands", "`about` - Information about PixaBot.\n`ping` - Test a connection to PixaBot.\n`version` - Displays the PixaBot's current version.", true)
+            .addField("General Commands", "`about` - Information about PixaBot.\n`help` - Displays the PixaBot's Help Guide, which is *this* one.\n`ping` - Test a connection to PixaBot.\n`version` - Displays the PixaBot's current version.", true)
             .addField("Fun Commands", "`8ball` - Ask a question to a bot, and what does the bot say…?\n`piko` - Shows the picture of Piko Kugihara, an anime original character serves as a mascot of PixaBot.\n`say` - Say something as a bot!")
             .addField("Moderation Commands", "`ban` - Bans the user out of this server.\n`kick` - Kicks a member.", true)
             .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
@@ -176,7 +176,7 @@ client.on("message", function(message) {
             } else {        
                 var choices = ["Yes.", "No.", "Maybe.", "It could be true."]
                 var rand = choices[Math.floor(Math.random() * choices.length)];                    
-                message.channel.send(rand)  
+                message.reply(rand)  
                 break
             }
         
@@ -188,8 +188,8 @@ client.on("message", function(message) {
 				.setDescription("Sent you a DM for the mascot!")
 				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 				.setTimestamp()                
-		    message.reply({embed});
-            message.author.send("Here's the mascot, Piko, an anime OC made by Yottabyte Inside, also known as Jigs.", { files: [ 'https://cdn.discordapp.com/attachments/347282801021943811/348985242385907714/pixa_by_exjageroo-dbka7oa.png' ] });
+		    message.channel.send({embed});
+            message.author.send("Here's the mascot, Piko Kugihara (釘原 飛鼓), an anime OC made by YottabyteINSIDE™, also known as Jigs.", { files: [ 'https://cdn.discordapp.com/attachments/347282801021943811/348985242385907714/pixa_by_exjageroo-dbka7oa.png' ] });
             break;
 }
 	//eval command
@@ -213,26 +213,27 @@ var guild = msg.guild
       if (typeof evaled !== "string")
         evaled = require("util").inspect(evaled);
 	  message.delete()
-	  if (!code) return msg.author.send("Eval failed! Please use Arguments!");
+	  if (!code) return msg.author.send(":warning: *Eval failed. Please use the specified arguments!*");
 	  const embed = new Discord.RichEmbed()
-	  .setTitle("Eval")
+	  .setAuthor("Eval", "https://cdn.discordapp.com/attachments/347288279357456387/349554608068362243/eval.png")
+	  .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 	  .setTimestamp()
-	  .setColor("#01DF01")
+	  .setColor("#940000")
 	  .setAuthor(msg.author.username, msg.author.displayAvatarURL)
-	  .addField("Input 📥", args.join(' '))
-	  .addField("Output 📤", "```x1\n" + clean(evaled) + "```")
+	  .addField("📥 Input", args.join(' '))
+	  .addField("📤 Output", "```x1\n" + clean(evaled) + "```")
       message.channel.send({embed});
 	  console.log("========================================================================================\nEVAL RESULTS\nINPUT:\n" + args.join(' ') + "\nOUTPUT:\n" + clean(evaled) + "\n========================================================================================\n");
     } catch (err) {
 	message.delete()
 	  const embed = new Discord.RichEmbed()
-	  .setTitle("Eval")
+	  .setAuthor("Eval", "https://cdn.discordapp.com/attachments/347288279357456387/349554608068362243/eval.png")
 	  .setTimestamp()
-	  .setColor("#DF0101")
-	  .setAuthor(msg.author.username, msg.author.displayAvatarURL)
+	  .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
+	  .setColor("#940000")
 	  .setDescription("ERROR")
-	  .addField("Input 📥", args.join(' '))
-	  .addField("Output 📤", "```x1\n" + clean(err) + "```")
+	  .addField("📥 Input", args.join(' '))
+	  .addField("📤 Output", "```x1\n" + clean(err) + "```")
       msg.author.send({embed});
       console.log("========================================================================================\nEVAL RESULTS\nERROR\n\nINPUT:\n" + args.join(' ') + "\nOUTPUT:\n" + clean(err) + "\n========================================================================================\n");
     }
