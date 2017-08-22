@@ -234,7 +234,6 @@ var guild = msg.guild
 	  .addField("📥 Input", args.join(' '))
 	  .addField("📤 Output", "```x1\n" + clean(evaled) + "```")
       message.channel.send({embed});
-	  break
 	  console.log("========================================================================================\nEVAL RESULTS\nINPUT:\n" + args.join(' ') + "\nOUTPUT:\n" + clean(evaled) + "\n========================================================================================\n");
     } catch (err) {
 	message.delete()
