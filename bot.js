@@ -190,7 +190,7 @@ client.on("message", function(message) {
 				.setTimestamp()                
 		    message.channel.send({embed});
             message.author.send("Here's the mascot, Piko Kugihara (釘原 飛鼓), an anime OC made by YottabyteINSIDE™, also known as Jigs.", { files: [ 'https://cdn.discordapp.com/attachments/347282801021943811/348985242385907714/pixa_by_exjageroo-dbka7oa.png' ] });
-            break;
+            break
         // command that is invalid.
 		default:
             haveMatched = false
