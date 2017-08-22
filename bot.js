@@ -227,7 +227,7 @@ var guild = msg.guild
 	  message.delete()
 	  if (!code) return msg.author.send(":warning: *Eval failed. Please use the specified arguments!*");
 	  const embed = new Discord.RichEmbed()
-	  .setAuthor("Eval", "https://cdn.discordapp.com/attachments/347288279357456387/349554608068362243/eval.png")
+	  .setAuthor("Eval Results", "https://cdn.discordapp.com/attachments/347288279357456387/349554608068362243/eval.png")
 	  .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 	  .setTimestamp()
 	  .setColor("#940000")
@@ -238,7 +238,7 @@ var guild = msg.guild
     } catch (err) {
 	message.delete()
 	  const embed = new Discord.RichEmbed()
-	  .setAuthor("Eval", "https://cdn.discordapp.com/attachments/347288279357456387/349554608068362243/eval.png")
+	  .setAuthor("Eval Results", "https://cdn.discordapp.com/attachments/347288279357456387/349554608068362243/eval.png")
 	  .setTimestamp()
 	  .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 	  .setColor("#940000")
