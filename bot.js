@@ -203,6 +203,7 @@ client.on("message", function(message) {
 }
 	//eval command
 	if (message.content.startsWith(prefix + "eval")) {
+	let msg = message
 	let args = msg.content.split(' ')
         let variable = args.shift()
 	if (message.author.id != owner_id && message.author.id != AuthDetails.rain && message.author.id != AuthDetails.yottabyte && message.author.id != AuthDetails.terax) return;
