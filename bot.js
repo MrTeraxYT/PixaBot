@@ -157,7 +157,7 @@ client.on("message", function(message) {
 	    case "say":
 			try {
                     if(message.content.length < prefix.length + 4) {
-                        message.channel.send("What i'm supposed to say ?")
+                        message.channel.send("Come on, say something!")
                         break
                     } else { 
 							message.channel.send(message.content.replace(prefix + "say ", ''));
@@ -182,13 +182,24 @@ client.on("message", function(message) {
         
         // piko command
 		case "piko":
-		    message.reply("Sent a DM with our mascot, Piko.");
-            message.author.send("Here's the mascot, Piko, made by Yottabyte Inside, also known as Jigs.", { files: [ 'https://cdn.discordapp.com/attachments/347282801021943811/348985242385907714/pixa_by_exjageroo-dbka7oa.png' ] });
+            var embed = new Discord.RichEmbed()
+				.setColor("#940000")
+				.setAuthor("Piko-chan!", "https://cdn.discordapp.com/attachments/347288279357456387/349276625575346179/dm.png")
+				.setDescription("Sent you a DM for the mascot!")
+				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
+				.setTimestamp()                
+		    message.reply({embed});
+            message.author.send("Here's the mascot, Piko, an anime OC made by Yottabyte Inside, also known as Jigs.", { files: [ 'https://cdn.discordapp.com/attachments/347282801021943811/348985242385907714/pixa_by_exjageroo-dbka7oa.png' ] });
             break;
-        
+        // command that is invalid.
         default:
             haveMatched = false
-            message.channel.send(":x: *Unknown command specified. Execute `px;help` to see my list of available commands.*".replace('px;', prefix))
+            var embed = new Discord.RichEmbed()
+				.setColor("#940000")
+				.setAuthor("Unknown Command", "https://cdn.discordapp.com/attachments/347288279357456387/349278178499493888/unknowncmd.png")
+				.setTitle("The specified command that you are trying to execute is invalid.")
+				.setDescription("Use `px;help` to view my available comands.".replace('px;', prefix))
+            message.channel.send({embed})
 }
 if (haveMatched){
     console.log(`[Command] ${message.author.id}/${message.author.username} (${message.content})`)
