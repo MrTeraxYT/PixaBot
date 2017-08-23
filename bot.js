@@ -209,7 +209,7 @@ client.on("message", function(message) {
 				.setTimestamp()
 				message.channel.sendMessage({embed});
 				*/
-				return;
+				return
 			 }
 		 
 			 if (!message.member.voiceChannel) {
@@ -224,7 +224,7 @@ client.on("message", function(message) {
 				.setTimestamp()
 				message.channel.sendMessage({embed});
 				*/
-				return;
+				return
 			 }
 		 
 			if (!servers[message.guild.id]) servers[message.guild.id] = {
