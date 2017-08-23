@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+const YTDL = require("ytdl-core");
 
 // Get authentication data
 try {
@@ -25,8 +26,21 @@ if(AuthDetails.prefix){
 } else {
 	console.log("No prefix set in auth.json!");
 }
+function play(connection, message) {
+	var server = servers[message.guild.id];
+	
+	server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
+	
+	server.queue.shift();
+	
+	server.dipatcher.on("end", function() {
+	  if(server.queue[0]) play(connection, message);
+	  else connection.disconnect();
+})}
 
 var version = "v0.3"
+
+var servers = {};
 
 client.on("ready", () => {
     client.fetchUser(owner_id)
@@ -194,7 +208,6 @@ client.on("message", function(message) {
 		case "play":
 			if (!args[1]) {
 				message.reply("The video URL is not specified.");
-				/*
             var embed = new Discord.RichEmbed()
 				.setColor("#940000")
 				.setAuthor("Music Player", "https://cdn.discordapp.com/attachments/347288279357456387/349279668639367168/music.png")
@@ -203,13 +216,11 @@ client.on("message", function(message) {
 				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 				.setTimestamp()
 				message.channel.sendMessage({embed});
-				*/
 				return
 			 }
 		 
 			 if (!message.member.voiceChannel) {
 				message.reply("You must join the voice channel to perform that action.");
-				/*
             var embed = new Discord.RichEmbed()
 				.setColor("#940000")
 				.setAuthor("Music Player", "https://cdn.discordapp.com/attachments/347288279357456387/349279668639367168/music.png")
@@ -218,7 +229,6 @@ client.on("message", function(message) {
 				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 				.setTimestamp()
 				message.channel.sendMessage({embed});
-				*/
 				return
 			 }
 		 
