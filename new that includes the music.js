@@ -207,7 +207,6 @@ client.on("message", function(message) {
             break
 		case "play":
 			if (!args[1]) {
-				message.reply("The video URL is not specified.");
             var embed = new Discord.RichEmbed()
 				.setColor("#940000")
 				.setAuthor("Music Player", "https://cdn.discordapp.com/attachments/347288279357456387/349279668639367168/music.png")
@@ -220,7 +219,6 @@ client.on("message", function(message) {
 			 }
 		 
 			 if (!message.member.voiceChannel) {
-				message.reply("You must join the voice channel to perform that action.");
             var embed = new Discord.RichEmbed()
 				.setColor("#940000")
 				.setAuthor("Music Player", "https://cdn.discordapp.com/attachments/347288279357456387/349279668639367168/music.png")
