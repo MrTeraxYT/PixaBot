@@ -198,6 +198,8 @@ client.on("message", function(message) {
     ============================== */
 		case "play":
 			if (!args[1]) {
+				message.reply("The video URL is not specified.");
+				/*
             var embed = new Discord.RichEmbed()
 				.setColor("#940000")
 				.setAuthor("Music Player", "https://cdn.discordapp.com/attachments/347288279357456387/349279668639367168/music.png")
@@ -205,11 +207,14 @@ client.on("message", function(message) {
 				.setDescription("Please provide a link.")
 				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 				.setTimestamp()
-				message.channel.sendMessage("{embed}");
+				message.channel.sendMessage({embed});
+				*/
 				return;
 			 }
 		 
 			 if (!message.member.voiceChannel) {
+				message.reply("You must join the voice channel to perform that action.");
+				/*
             var embed = new Discord.RichEmbed()
 				.setColor("#940000")
 				.setAuthor("Music Player", "https://cdn.discordapp.com/attachments/347288279357456387/349279668639367168/music.png")
@@ -217,7 +222,8 @@ client.on("message", function(message) {
 				.setDescription("Please join the voice channel to play music.")
 				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 				.setTimestamp()
-				message.channel.sendMessage("{embed}");
+				message.channel.sendMessage({embed});
+				*/
 				return;
 			 }
 		 
