@@ -17,8 +17,18 @@ To execute these commands, the command's prefix is `px;`.
 * **`help`** - Displays PixaBot's Help Guide.
 
 ## Version history
-### v0.2
+
+### v0.4
 *This documentation is preliminary and is subjected to change.*
+
+- **Moderation commands:** Manage the members. Kick, ban—you name it. Use the moderation commands as prescribed from the Help Guide.
+
+### v0.3
+*This documentation is preliminary and is subjected to change.*
+
+- *(experimental)* **Music player:** You can now play music! Use the music commands as prescribed from the Help Guide.
+
+### v0.2
 - **Embed texts:** Certain commands now feature the embedded rich text layout.
 - **Removed `pingtime`:** It is merged to the `ping` command.
 - **`developers` to `about`**: The bot's credits are now expended to an information about PixaBot. *(syntax: `px;about`)*
@@ -26,7 +36,6 @@ To execute these commands, the command's prefix is `px;`.
 - **Say:** Say something as a bot! *(syntax: `px;say <message>`)*
 - **8ball:** Ask a random question… if you are in luck. *(syntax: `px;8ball <question>`)*
 - **Meet Piko-chan!:** Our bot's anime OC mascot. *(syntax: `px;piko`)*
-- **Kick and ban all-in-one:** These two commands are merged with the `do` command. *(syntax: `px;do`)*
 
 ### v0.1
 - **Ping:** Test the ping status. *(syntax: `px;ping`)*
