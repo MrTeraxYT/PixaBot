@@ -26,7 +26,7 @@ if(AuthDetails.prefix){
 	console.log("No prefix set in auth.json!");
 }
 
-var version = "v0.2"
+var version = "v0.3"
 
 client.on("ready", () => {
     client.fetchUser(owner_id)
@@ -191,6 +191,58 @@ client.on("message", function(message) {
 		    message.channel.send({embed});
             message.author.send("Here's the mascot, Piko Kugihara (釘原 飛鼓), an anime OC made by YottabyteINSIDE™, also known as Jigs.", { files: [ 'https://cdn.discordapp.com/attachments/347282801021943811/348985242385907714/pixa_by_exjageroo-dbka7oa.png' ] });
             break
+		}
+/*     ==========================
+*        MUSIC COMMANDS
+*        e.g. play, stop, skip...
+    ============================== */
+		case "play":
+			if (!args[1]) {
+            var embed = new Discord.RichEmbed()
+				.setColor("#940000")
+				.setAuthor("Music Player", "https://cdn.discordapp.com/attachments/347288279357456387/349279668639367168/music.png")
+				.setTitle("No video URL specified.")
+				.setDescription("Please provide a link.")
+				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
+				.setTimestamp()
+				message.channel.sendMessage("{embed}");
+				return;
+			 }
+		 
+			 if (!message.member.voiceChannel) {
+            var embed = new Discord.RichEmbed()
+				.setColor("#940000")
+				.setAuthor("Music Player", "https://cdn.discordapp.com/attachments/347288279357456387/349279668639367168/music.png")
+				.setTitle("You are not in the voice channel.")
+				.setDescription("Please join the voice channel to play music.")
+				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
+				.setTimestamp()
+				message.channel.sendMessage("{embed}");
+				return;
+			 }
+		 
+			if (!servers[message.guild.id]) servers[message.guild.id] = {
+				queue: []
+			}
+		 
+		 var server = servers[message.guild.id];
+		 
+		  server.queue.push(args[1]);
+		  
+			 if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
+			 play(connection, message);
+			})
+		break;
+		case "skip":
+			var server = servers[message.guild.id];
+		 
+		 if (server.dispatcher) server.dispatcher.end();
+		 break;
+		 case "stop":
+		   var server = servers[message.guild.id];
+		   
+		   if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
+		   break;
 	    
 		default:
             haveMatched = false
