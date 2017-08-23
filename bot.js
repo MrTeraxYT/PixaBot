@@ -155,10 +155,11 @@ client.on("message", function(message) {
             var embed = new Discord.RichEmbed()
             .setColor("#940000")
             .setAuthor("PixaBot Help Guide", "https://cdn.discordapp.com/attachments/347288279357456387/348643679373754369/help.png")
-            .setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`.".replace('px;', prefix))
+            .setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`.\n\n**Parameters:**\n< > - Required\n[ ] - Optional".replace('px;', prefix))
             .addField("General Commands", "`about` - Information about PixaBot.\n`help` - Displays the PixaBot's Help Guide, which is *this* one.\n`ping` - Test a connection to PixaBot.\n`version` - Displays the PixaBot's current version.", true)
-            .addField("Fun Commands", "`8ball` - Ask a question to a bot, and what does the bot say…?\n`piko` - Shows the picture of Piko Kugihara, an anime original character serves as a mascot of PixaBot.\n`say` - Say something as a bot!")
-            .addField("Moderation Commands", "`ban` - Bans the user out of this server.\n`kick` - Kicks a member.", true)
+            .addField("Fun Commands", "`8ball <question>` - Ask a question to a bot, and what does the bot say…?\n`piko` - Shows the picture of Piko Kugihara, an anime original character serves as a mascot of PixaBot.\n`say <message>` - Say something as a bot!")
+			.addField("Music Commands", `play` )
+            .addField("Moderation Commands", "`ban <mention> <reason>` - Bans the user out of this server.\n`kick <mention> <reason>` - Kicks a member.", true)
             .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
             .setTimestamp()                
             if (message.author.id == owner_id) {    
@@ -188,7 +189,7 @@ client.on("message", function(message) {
                 message.channel.send("Go ahead, ask it anything.")
                 break
             } else {        
-                var choices = ["Yes.", "No.", "Maybe.", "It could be true."]
+                var choices = ["Yes.", "No.", "Maybe.", "It could be true.", "I guess so.", "Tell your doctor to find out.", "No, I'm not!", "I don't like you!"]
                 var rand = choices[Math.floor(Math.random() * choices.length)];                    
                 message.reply(rand)  
                 break
@@ -251,6 +252,14 @@ client.on("message", function(message) {
 		   var server = servers[message.guild.id];
 		   
 		   if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
+			var embed = new Discord.RichEmbed()
+				.setColor("#940000")
+				.setAuthor("Music Player", "https://cdn.discordapp.com/attachments/347288279357456387/349279668639367168/music.png")
+				.setTitle("Music stopped.")
+				.setDescription("I stopped the music and I left the voice channel.")
+				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
+				.setTimestamp()
+				message.channel.sendMessage({embed});
 		   break;
 	    
 		default:
