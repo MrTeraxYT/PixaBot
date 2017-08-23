@@ -191,11 +191,6 @@ client.on("message", function(message) {
 		    message.channel.send({embed});
             message.author.send("Here's the mascot, Piko Kugihara (釘原 飛鼓), an anime OC made by YottabyteINSIDE™, also known as Jigs.", { files: [ 'https://cdn.discordapp.com/attachments/347282801021943811/348985242385907714/pixa_by_exjageroo-dbka7oa.png' ] });
             break
-		}
-/*     ==========================
-*        MUSIC COMMANDS
-*        e.g. play, stop, skip...
-    ============================== */
 		case "play":
 			if (!args[1]) {
 				message.reply("The video URL is not specified.");
@@ -255,7 +250,6 @@ client.on("message", function(message) {
     }
 /*
         // command that is invalid.
-
             var embed = new Discord.RichEmbed()
 				.setColor("#940000")
 				.setAuthor("Unknown Command", "https://cdn.discordapp.com/attachments/347288279357456387/349278178499493888/unknowncmd.png")
