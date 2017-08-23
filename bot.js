@@ -158,7 +158,7 @@ client.on("message", function(message) {
             .setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`.\n\n**Parameters:**\n< > - Required\n[ ] - Optional".replace('px;', prefix))
             .addField("General Commands", "`about` - Information about PixaBot.\n`help` - Displays the PixaBot's Help Guide, which is *this* one.\n`ping` - Test a connection to PixaBot.\n`version` - Displays the PixaBot's current version.", true)
             .addField("Fun Commands", "`8ball <question>` - Ask a question to a bot, and what does the bot say…?\n`piko` - Shows the picture of Piko Kugihara, an anime original character serves as a mascot of PixaBot.\n`say <message>` - Say something as a bot!")
-			.addField("Music Commands", `play` )
+			.addField("Music Commands", "`play <URL>` - Plays a music.\n`skip` - Skips the current song.\n`stop` - Stops the music and disconnects from the voice channel.")
             .addField("Moderation Commands", "`ban <mention> <reason>` - Bans the user out of this server.\n`kick <mention> <reason>` - Kicks a member.", true)
             .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
             .setTimestamp()                
