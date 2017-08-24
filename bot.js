@@ -261,25 +261,8 @@ client.on("message", function(message) {
 				.setTimestamp()
 				message.channel.sendMessage({embed});
 		   break;
-	    
-		default:
-            haveMatched = false
-    }
-/*
-        // command that is invalid.
-            var embed = new Discord.RichEmbed()
-				.setColor("#940000")
-				.setAuthor("Unknown Command", "https://cdn.discordapp.com/attachments/347288279357456387/349278178499493888/unknowncmd.png")
-				.setTitle("The specified command that you are trying to execute is invalid.")
-				.setDescription("Use `px;help` to view my available commands.".replace('px;', prefix))
-				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
-				.setTimestamp()                
-            message.channel.send({embed})
-			break;
-}
-*/
-	//eval command
-	if (message.content.startsWith(prefix + "eval")) {
+           
+        case "eval":
 		let msg = message
 		let bot = client
 	let args = msg.content.split(' ')
@@ -321,8 +304,26 @@ var guild = msg.guild
 	  .addField("📤 Output", "```x1\n" + clean(err) + "```")
       msg.author.send({embed});
       console.log("========================================================================================\nEVAL RESULTS\nERROR\n\nINPUT:\n" + args.join(' ') + "\nOUTPUT:\n" + clean(err) + "\n========================================================================================\n");
-    }
-  }
+    }             
+	    
+		default:
+            haveMatched = false
+    }      
+/*
+        // command that is invalid.
+            var embed = new Discord.RichEmbed()
+				.setColor("#940000")
+				.setAuthor("Unknown Command", "https://cdn.discordapp.com/attachments/347288279357456387/349278178499493888/unknowncmd.png")
+				.setTitle("The specified command that you are trying to execute is invalid.")
+				.setDescription("Use `px;help` to view my available commands.".replace('px;', prefix))
+				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
+				.setTimestamp()                
+            message.channel.send({embed})
+			break;
+}
+*/
+	//eval command
+	if (message.content.startsWith(prefix + "eval")) 
 if (haveMatched){
     console.log(`[Command] ${message.author.id}/${message.author.username} (${message.content})`)
 }
