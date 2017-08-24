@@ -189,7 +189,7 @@ client.on("message", function(message) {
 					embed.setThumbnail(mentionusers.displayAvatarURL)
 					embed.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 					embed.setTimestamp()
-				message.channel.send({embed})
+				message.channel.send({embed});
 				}
 			else {
 				var embed = new Discord.RichEmbed()
@@ -209,8 +209,7 @@ client.on("message", function(message) {
 					embed.setThumbnail(message.author.displayAvatarURL)
 					embed.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 					embed.setTimestamp()
-				message.channel.send({embed})
-			}
+				message.channel.send({embed});
 			break;
 		// say command
 	    case "say":
