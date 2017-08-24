@@ -206,6 +206,12 @@ client.on("message", function(message) {
 		    message.channel.send({embed});
             message.author.send("Here's the mascot, Piko Kugihara (釘原 飛鼓), an anime OC made by YottabyteINSIDE™, also known as Jigs.", { files: [ 'https://cdn.discordapp.com/attachments/347282801021943811/348985242385907714/pixa_by_exjageroo-dbka7oa.png' ] });
             break
+
+/*
+*	================= MUSIC PLAYER ==================
+*	Commands such as play, stop, skip, queue, etc.
+*/
+		// play command
 		case "play":
 			if (!args[1]) {
             var embed = new Discord.RichEmbed()
@@ -243,11 +249,13 @@ client.on("message", function(message) {
 			 play(connection, message);
 			})
 		break;
+		// skip command
 		case "skip":
 			var server = servers[message.guild.id];
 		 
 		 if (server.dispatcher) server.dispatcher.end();
 		 break;
+		// stop command
 		 case "stop":
 		   var server = servers[message.guild.id];
 		   
@@ -261,7 +269,10 @@ client.on("message", function(message) {
 				.setTimestamp()
 				message.channel.sendMessage({embed});
 		   break;
-           
+/*
+*	================= MUSIC PLAYER ENDS ==================
+*/
+		//eval command           
         case "eval":
 		let msg = message
 		let bot = client
@@ -321,7 +332,7 @@ var guild = msg.guild
             message.channel.send({embed})
 			break;
 }
-	//eval command
+
 if (haveMatched){
     console.log(`[Command] ${message.author.id}/${message.author.username} (${message.content})`)
 }
