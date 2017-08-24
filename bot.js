@@ -107,7 +107,7 @@ client.on("message", function(message) {
             break;
             
         // version command
-        case "version" or "ver":
+        case "version":
             var embed = new Discord.RichEmbed()
 	        .setColor("#940000")
             .setAuthor("Version", "https://cdn.discordapp.com/attachments/347288279357456387/348642213582077953/ver.png")
@@ -168,7 +168,7 @@ client.on("message", function(message) {
             message.channel.send({embed});
             break;
 		// userinfo command
-		case "userinfo" or "uinfo":
+		case "userinfo":
 			if (message.mentions.users.first()) {
 				const mentionmembers = message.mentions.members.first()
 				const mentionusers = message.mentions.users.first()
