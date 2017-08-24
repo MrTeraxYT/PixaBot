@@ -306,12 +306,11 @@ var guild = msg.guild
       console.log("========================================================================================\nEVAL RESULTS\nERROR\n\nINPUT:\n" + args.join(' ') + "\nOUTPUT:\n" + clean(err) + "\n========================================================================================\n");
     }
     break    
-	    
+	    // command that is invalid. 
 		default:
-            haveMatched = false
-    }      
-/*
-        // command that is invalid.
+            haveMatched = false     
+
+
             var embed = new Discord.RichEmbed()
 				.setColor("#940000")
 				.setAuthor("Unknown Command", "https://cdn.discordapp.com/attachments/347288279357456387/349278178499493888/unknowncmd.png")
@@ -322,7 +321,6 @@ var guild = msg.guild
             message.channel.send({embed})
 			break;
 }
-*/
 	//eval command
 if (haveMatched){
     console.log(`[Command] ${message.author.id}/${message.author.username} (${message.content})`)
