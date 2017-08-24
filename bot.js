@@ -190,8 +190,7 @@ client.on("message", function(message) {
 					embed.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 					embed.setTimestamp()
 				message.channel.send({embed});
-				}
-			else {
+			} else {
 				var embed = new Discord.RichEmbed()
 					embed.setColor("#940000")
 					embed.setAuthor("View information about " + message.author.username, "https://cdn.discordapp.com/attachments/347288279357456387/349664562510823425/uinfo.png", true)
@@ -210,6 +209,7 @@ client.on("message", function(message) {
 					embed.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 					embed.setTimestamp()
 				message.channel.send({embed});
+			}
 			break;
 		// say command
 	    case "say":
