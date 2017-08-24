@@ -107,7 +107,7 @@ client.on("message", function(message) {
             break;
             
         // version command
-        case "version":
+        case "version" or "ver":
             var embed = new Discord.RichEmbed()
 	        .setColor("#940000")
             .setAuthor("Version", "https://cdn.discordapp.com/attachments/347288279357456387/348642213582077953/ver.png")
@@ -167,7 +167,50 @@ client.on("message", function(message) {
             }
             message.channel.send({embed});
             break;
-            
+		// userinfo command
+		case "userinfo" or "uinfo":
+			if (message.mentions.users.first()) {
+				const mentionmembers = message.mentions.members.first()
+				const mentionusers = message.mentions.users.first()
+				var embed = new Discord.RichEmbed()
+					.setColor("#940000")
+					.setAuthor("View information about " + mentionusers.username, "https://cdn.discordapp.com/attachments/347288279357456387/349664562510823425/uinfo.png", true)
+					.addField("Nickname", mentionmembers.displayName, true)
+					.addField("User's ID", mentionmembers.id, true)
+					.addField("Discriminator ID", mentionmembers.discriminator, true)
+					.addField("Current atatus", mentionmembers.presence.status)
+					.addField("Joined Discord on", mentionusers.createdAt)
+					.addField("Server joined on", mentionmembers.joinedAt)
+					if (msg.member.voiceChannel) {
+						.addField("Current Voice Channel", mentionmembers.voiceChannel.name)
+					}
+					.addField("Roles", mentionmembers.roles.map(r=> " " + r.name))
+					.addField("Highest role ", message.member.highestRole.name)
+					.setThumbnail(mentionusers.displayAvatarURL)
+					.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
+					.setTimestamp()
+				message.channel.send({embed})
+				}
+			else {
+				var embed = new Discord.RichEmbed()
+					.setColor("#940000")
+					.setAuthor("View information about " + message.author.username, "https://cdn.discordapp.com/attachments/347288279357456387/349664562510823425/uinfo.png", true)
+					.addField("Nickname", message.member.displayName, true)
+					.addField("Discriminator ID", message.author.discriminator, true)
+					.addField("User's ID", message.author.id, true)
+					.addField("Current status", message.author.presence.status)
+					.addField("Joined Discord on", message.member.user.createdAt)
+					.addField("Server joined on", message.member.joinedAt)
+					if (msg.member.voiceChannel) {
+						.addField("Voice Channel", msg.member.voiceChannel.name)
+					}
+					.addField("Roles", msg.member.roles.map(r=> " " + r.name))
+					.addField("Highest role ", message.member.highestRole.name)
+					.setThumbnail(message.author.displayAvatarURL)
+					.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
+					.setTimestamp()
+				message.channel.send({embed})
+			break;
 		// say command
 	    case "say":
 			try {
@@ -320,8 +363,6 @@ var guild = msg.guild
 	    // command that is invalid. 
 		default:
             haveMatched = false     
-
-
             var embed = new Discord.RichEmbed()
 				.setColor("#940000")
 				.setAuthor("Unknown Command", "https://cdn.discordapp.com/attachments/347288279357456387/349278178499493888/unknowncmd.png")
