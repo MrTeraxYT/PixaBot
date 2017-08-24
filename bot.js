@@ -304,7 +304,8 @@ var guild = msg.guild
 	  .addField("📤 Output", "```x1\n" + clean(err) + "```")
       msg.author.send({embed});
       console.log("========================================================================================\nEVAL RESULTS\nERROR\n\nINPUT:\n" + args.join(' ') + "\nOUTPUT:\n" + clean(err) + "\n========================================================================================\n");
-    }             
+    }
+    break    
 	    
 		default:
             haveMatched = false
@@ -323,7 +324,6 @@ var guild = msg.guild
 }
 */
 	//eval command
-	if (message.content.startsWith(prefix + "eval")) 
 if (haveMatched){
     console.log(`[Command] ${message.author.id}/${message.author.username} (${message.content})`)
 }
