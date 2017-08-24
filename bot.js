@@ -210,6 +210,7 @@ client.on("message", function(message) {
 					embed.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 					embed.setTimestamp()
 				message.channel.send({embed})
+			}
 			break;
 		// say command
 	    case "say":
