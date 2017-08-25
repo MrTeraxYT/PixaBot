@@ -315,6 +315,46 @@ client.on("message", function(message) {
 /*
 *	================= MUSIC PLAYER ENDS ==================
 */
+	    case "userinfo":
+   if (message.mentions.users.first()) {
+    const mentionmembers = message.mentions.members.first()
+    const mentionusers = message.mentions.users.first()
+    const embed = new Discord.MessageEmbed()
+	embed.setColor("#061782")
+    embed.setAuthor(mentionusers.tag, mentionusers.displayAvatarURL())
+    embed.setTitle("Userinfo")
+    embed.addField("Name (Nickname)", mentionmembers.displayName, true)
+    embed.addField("ID", mentionmembers.id, true)
+    embed.addField("Status", mentionmembers.presence.status)
+	embed.addField("Created Timestamp", mentionusers.createdAt.toUTCString())
+    embed.addField("Joined Timestamp", mentionmembers.joinedAt.toUTCString())
+    if (message.member.voiceChannel) {
+    embed.addField("Voice Channel", mentionmembers.voiceChannel.name)
+    }
+    embed.addField("Roles", mentionmembers.roles.map(r=> " " + r.name).join(', '))
+    embed.setThumbnail(mentionusers.displayAvatarURL)
+    embed.setTimestamp()
+    message.channel.send({embed})
+    } else {
+    const embed = new Discord.MessageEmbed()
+	embed.setColor("#061782")	
+    embed.setAuthor(message.author.tag, message.author.displayAvatarURL())
+    embed.setTitle("Userinfo")
+    embed.addField("Name (Nickname)", message.member.displayName, true)
+    embed.addField("ID", message.author.id, true)
+    embed.addField("Status", message.author.presence.status)
+	embed.addField("Created Timestamp", message.member.user.createdAt.toUTCString())
+    embed.addField("Joined Timestamp", message.member.joinedAt.toUTCString())
+    if (message.member.voiceChannel) {
+    embed.addField("Voice Channel", message.member.voiceChannel.name)
+    }
+    embed.addField("Roles", message.member.roles.map(r=> " " + r.name).join(', '))
+    embed.setThumbnail(message.author.displayAvatarURL)
+    embed.setTimestamp()
+    message.channel.send({embed})
+    }
+}
+break;
 		//eval command           
         case "eval":
 		let msg = message
