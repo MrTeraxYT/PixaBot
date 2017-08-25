@@ -167,50 +167,7 @@ client.on("message", function(message) {
             }
             message.channel.send({embed});
             break;
-		// userinfo command
-		case "userinfo":
-			if (message.mentions.users.first()) {
-				const mentionmembers = message.mentions.members.first()
-				const mentionusers = message.mentions.users.first()
-				var embed = new Discord.RichEmbed()
-					embed.setColor("#940000")
-					embed.setAuthor("View information about " + mentionusers.username, "https://cdn.discordapp.com/attachments/347288279357456387/349664562510823425/uinfo.png", true)
-					embed.addField("Nickname", mentionmembers.displayName, true)
-					embed.addField("User's ID", mentionmembers.id, true)
-					embed.addField("Discriminator ID", mentionmembers.discriminator, true)
-					embed.addField("Current atatus", mentionmembers.presence.status)
-					embed.addField("Joined Discord on", mentionusers.createdAt)
-					embed.addField("Server joined on", mentionmembers.joinedAt)
-					if (msg.member.voiceChannel) {
-						embed.addField("Current Voice Channel", mentionmembers.voiceChannel.name)
-					}
-					embed.addField("Roles", mentionmembers.roles.map(r=> " " + r.name))
-					embed.addField("Highest role ", message.member.highestRole.name)
-					embed.setThumbnail(mentionusers.displayAvatarURL)
-					embed.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
-					embed.setTimestamp()
-				message.channel.send({embed});
-			} else {
-				var embed = new Discord.RichEmbed()
-					embed.setColor("#940000")
-					embed.setAuthor("View information about " + message.author.username, "https://cdn.discordapp.com/attachments/347288279357456387/349664562510823425/uinfo.png", true)
-					embed.addField("Nickname", message.member.displayName, true)
-					embed.addField("Discriminator ID", message.author.discriminator, true)
-					embed.addField("User's ID", message.author.id, true)
-					embed.addField("Current status", message.author.presence.status)
-					embed.addField("Joined Discord on", message.member.user.createdAt)
-					.addField("Server joined on", message.member.joinedAt)
-					if (msg.member.voiceChannel) {
-						embed.addField("Voice Channel", msg.member.voiceChannel.name)
-					}
-					embed.addField("Roles", msg.member.roles.map(r=> " " + r.name))
-					embed.addField("Highest role ", message.member.highestRole.name)
-					embed.setThumbnail(message.author.displayAvatarURL)
-					embed.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
-					embed.setTimestamp()
-				message.channel.send({embed});
-			}
-			break;
+		   
 		// say command
 	    case "say":
 			try {
