@@ -276,7 +276,7 @@ client.on("message", function(message) {
    if (message.mentions.users.first()) {
     const mentionmembers = message.mentions.members.first()
     const mentionusers = message.mentions.users.first()
-    const embed = new Discord.MessageEmbed()
+    var embed = new Discord.MessageEmbed()
 	embed.setColor("#061782")
     embed.setAuthor(mentionusers.tag, mentionusers.displayAvatarURL())
     embed.setTitle("Userinfo")
@@ -293,7 +293,7 @@ client.on("message", function(message) {
     embed.setTimestamp()
     message.channel.send({embed})
     } else {
-    const embed = new Discord.MessageEmbed()
+    var embed = new Discord.MessageEmbed()
 	embed.setColor("#061782")	
     embed.setAuthor(message.author.tag, message.author.displayAvatarURL())
     embed.setTitle("Userinfo")
