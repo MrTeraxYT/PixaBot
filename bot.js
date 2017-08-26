@@ -278,7 +278,7 @@ client.on("message", function(message) {
 				var mentionusers = message.mentions.users.first()
 				var embed = new Discord.RichEmbed()
 					embed.setColor("#940000")
-					embed.setAuthor("View information about " + mentionusers.name, "https://cdn.discordapp.com/attachments/347288279357456387/349664562510823425/uinfo.png")
+					embed.setAuthor("View information about " + mentionusers.username, "https://cdn.discordapp.com/attachments/347288279357456387/349664562510823425/uinfo.png")
 					embed.addField("Server nickname", mentionmembers.displayName, true)
 					embed.addField("Discriminator ID", mentionmembers.discriminator, true)
 					embed.addField("User ID", mentionmembers.id, true)
@@ -296,7 +296,7 @@ client.on("message", function(message) {
 			} else {
 				var embed = new Discord.RichEmbed()
 					embed.setColor("#940000")	
-					embed.setAuthor("View information about " message.author.name, "https://cdn.discordapp.com/attachments/347288279357456387/349664562510823425/uinfo.png")
+					embed.setAuthor("View information about " + message.author.username, "https://cdn.discordapp.com/attachments/347288279357456387/349664562510823425/uinfo.png")
 					embed.addField("Nickname", message.member.displayName, true)
 					embed.addField("Discriminator ID", message.author.discriminator, true)
 					embed.addField("User ID", message.author.id, true)
