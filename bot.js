@@ -116,6 +116,32 @@ client.on("message", function(message) {
            	.setTimestamp()
             message.channel.send({embed});
             break;
+		
+		// avatar command
+		case "avatar":
+			if (message.mentions.users.first()) {
+				var mentionmembers = message.mentions.members.first()
+				var mentionusers = message.mentions.users.first()
+				var embed = new Discord.RichEmbed()
+					em.setColor("#940000")
+					embed.setAuthor("Avatar", "https://cdn.discordapp.com/attachments/347288279357456387/351084610500689940/pxavatar.png")
+					embed.setDescription(mentionusers.username + "'s current avatar")
+					embed.setImage(mentionusers.displayAvatarURL)
+					embed.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
+					embed.setTimestamp()
+				msg.channel.send({embed})
+			} else {
+				var embed = new Discord.RichEmbed()
+				    embed.setColor("#940000")
+					embed.setAuthor("Avatar", "https://cdn.discordapp.com/attachments/347288279357456387/351084610500689940/pxavatar.png")
+					embed.setDescription("Your current avatar")
+					embed.setImage(message.author.displayAvatarURL)
+					embed.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
+					embed.setTimestamp()
+				msg.channel.send({embed})
+			}
+		}
+		break;
             
         // kick command
         case "kick":
@@ -205,7 +231,7 @@ client.on("message", function(message) {
 				.setTimestamp()                
 		    message.channel.send({embed});
             message.author.send("Here's the mascot, Piko Kugihara (釘原 飛鼓), an anime OC made by YottabyteINSIDE™, also known as Jigs.", { files: [ 'https://cdn.discordapp.com/attachments/347282801021943811/348985242385907714/pixa_by_exjageroo-dbka7oa.png' ] });
-            break
+            break;
 
 /*
 *	================= MUSIC PLAYER ==================
@@ -229,8 +255,7 @@ client.on("message", function(message) {
             var embed = new Discord.RichEmbed()
 				.setColor("#940000")
 				.setAuthor("Music Player", "https://cdn.discordapp.com/attachments/347288279357456387/349279668639367168/music.png")
-				.setTitle("You are not in the voice channel.")
-				.setDescription("Please join the voice channel to play music.")
+				.addField("You are not in the voice channel.", "Please join the voice channel to play music.")
 				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 				.setTimestamp()
 				message.channel.sendMessage({embed});
@@ -263,8 +288,7 @@ client.on("message", function(message) {
 			var embed = new Discord.RichEmbed()
 				.setColor("#940000")
 				.setAuthor("Music Player", "https://cdn.discordapp.com/attachments/347288279357456387/349279668639367168/music.png")
-				.setTitle("Music stopped.")
-				.setDescription("I stopped the music and I left the voice channel.")
+				.addField("Music stopped.", "I stopped the music and I left the voice channel.")
 				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 				.setTimestamp()
 				message.channel.sendMessage({embed});
@@ -372,8 +396,7 @@ var guild = msg.guild
             var embed = new Discord.RichEmbed()
 				.setColor("#940000")
 				.setAuthor("Unknown Command", "https://cdn.discordapp.com/attachments/347288279357456387/349278178499493888/unknowncmd.png")
-				.setTitle("The specified command that you are trying to execute is invalid.")
-				.setDescription("Use `px;help` to view my available commands.".replace('px;', prefix))
+				.addField("The specified command that you are trying to execute is invalid.", "Use `px;help` to view my available commands.".replace('px;', prefix))
 				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 				.setTimestamp()                
             message.channel.send({embed})
