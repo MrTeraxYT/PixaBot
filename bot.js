@@ -129,7 +129,7 @@ client.on("message", function(message) {
 					embed.setImage(mentionusers.displayAvatarURL)
 					embed.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 					embed.setTimestamp()
-				msg.channel.send({embed})
+				message.channel.send({embed})
 			} else {
 				var embed = new Discord.RichEmbed()
 				    embed.setColor("#940000")
@@ -138,7 +138,7 @@ client.on("message", function(message) {
 					embed.setImage(message.author.displayAvatarURL)
 					embed.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 					embed.setTimestamp()
-				msg.channel.send({embed})
+				message.channel.send({embed})
 			}
 		}
 		break;
