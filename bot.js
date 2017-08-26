@@ -387,7 +387,7 @@ var guild = msg.guild
 		case "invite":
 			client.generateInvite(['ADMINISTRATOR', 'SEND_MESSAGES', 'MANAGE_GUILD', 'MANAGE_ROLES', 'MANAGE_CHANNELS', 'KICK_MEMBERS', 'READ_MESSAGES', 'BAN_MEMBERS', 'SEND_MESSAGES'])
 			.then(link => {
-				msg.channel.send(`Here is a invite, you can add me to own servers already: ${link}`);
+				message.channel.send(`Here is a invite, you can add me to own servers already: ${link}`);
 			});
 			break;
 	    // command that is invalid. 
