@@ -276,7 +276,7 @@ client.on("message", function(message) {
 			if (message.mentions.users.first()) {
 				var mentionmembers = message.mentions.members.first()
 				var mentionusers = message.mentions.users.first()
-				var embed = new Discord.MessageEmbed()
+				var embed = new Discord.RichEmbed()
 					embed.setColor("#940000")
 					embed.setAuthor("View information about " + mentionusers.name, "https://cdn.discordapp.com/attachments/347288279357456387/349664562510823425/uinfo.png")
 					embed.addField("Server nickname", mentionmembers.displayName, true)
@@ -294,7 +294,7 @@ client.on("message", function(message) {
 					embed.setTimestamp()
 				message.channel.send({embed})
 			} else {
-				var embed = new Discord.MessageEmbed()
+				var embed = new Discord.RichEmbed()
 					embed.setColor("#940000")	
 					embed.setAuthor("View information about " message.author.name, "https://cdn.discordapp.com/attachments/347288279357456387/349664562510823425/uinfo.png")
 					embed.addField("Nickname", message.member.displayName, true)
