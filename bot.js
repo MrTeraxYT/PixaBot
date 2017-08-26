@@ -280,7 +280,7 @@ client.on("message", function(message) {
 					embed.setColor("#940000")
 					embed.setAuthor("View information about " + mentionusers.username, "https://cdn.discordapp.com/attachments/347288279357456387/349664562510823425/uinfo.png")
 					embed.addField("Server nickname", mentionmembers.displayName, true)
-					embed.addField("Discriminator ID", mentionmembers.discriminator, true)
+					embed.addField("Discriminator ID", mentionusers.discriminator, true)
 					embed.addField("User ID", mentionmembers.id, true)
 					embed.addField("Current Status", mentionmembers.presence.status)
 					embed.addField("Join Discord on", mentionusers.createdAt.toUTCString())
