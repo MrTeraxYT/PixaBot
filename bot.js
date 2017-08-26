@@ -273,42 +273,44 @@ client.on("message", function(message) {
 *	================= MUSIC PLAYER ENDS ==================
 */
 	    case "userinfo":
-   if (message.mentions.users.first()) {
-    const mentionmembers = message.mentions.members.first()
-    const mentionusers = message.mentions.users.first()
-    var embed = new Discord.MessageEmbed()
-	embed.setColor("#061782")
-    embed.setAuthor(mentionusers.tag, mentionusers.displayAvatarURL())
-    embed.setTitle("Userinfo")
-    embed.addField("Name (Nickname)", mentionmembers.displayName, true)
-    embed.addField("ID", mentionmembers.id, true)
-    embed.addField("Status", mentionmembers.presence.status)
-	embed.addField("Created Timestamp", mentionusers.createdAt.toUTCString())
-    embed.addField("Joined Timestamp", mentionmembers.joinedAt.toUTCString())
-    if (message.member.voiceChannel) {
-    embed.addField("Voice Channel", mentionmembers.voiceChannel.name)
-    }
-    embed.addField("Roles", mentionmembers.roles.map(r=> " " + r.name).join(', '))
-    embed.setThumbnail(mentionusers.displayAvatarURL)
-    embed.setTimestamp()
-    message.channel.send({embed})
-    } else {
-    var embed = new Discord.MessageEmbed()
-	embed.setColor("#061782")	
-    embed.setAuthor(message.author.tag, message.author.displayAvatarURL())
-    embed.setTitle("Userinfo")
-    embed.addField("Name (Nickname)", message.member.displayName, true)
-    embed.addField("ID", message.author.id, true)
-    embed.addField("Status", message.author.presence.status)
-	embed.addField("Created Timestamp", message.member.user.createdAt.toUTCString())
-    embed.addField("Joined Timestamp", message.member.joinedAt.toUTCString())
-    if (message.member.voiceChannel) {
-    embed.addField("Voice Channel", message.member.voiceChannel.name)
-    }
-    embed.addField("Roles", message.member.roles.map(r=> " " + r.name).join(', '))
-    embed.setThumbnail(message.author.displayAvatarURL)
-    embed.setTimestamp()
-    message.channel.send({embed})
+			if (message.mentions.users.first()) {
+				var mentionmembers = message.mentions.members.first()
+				var mentionusers = message.mentions.users.first()
+				var embed = new Discord.MessageEmbed()
+					embed.setColor("#940000")
+					embed.setAuthor("View information about " + mentionusers.name, "https://cdn.discordapp.com/attachments/347288279357456387/349664562510823425/uinfo.png")
+					embed.addField("Server nickname", mentionmembers.displayName, true)
+					embed.addField("Discriminator ID", mentionmembers.discriminator, true)
+					embed.addField("User ID", mentionmembers.id, true)
+					embed.addField("Current Status", mentionmembers.presence.status)
+					embed.addField("Join Discord on", mentionusers.createdAt.toUTCString())
+					embed.addField("Sever joined on", mentionmembers.joinedAt.toUTCString())
+					if (message.member.voiceChannel) {
+						embed.addField("Current Voice Channel", mentionmembers.voiceChannel.name)
+					}
+					embed.addField("Roles", mentionmembers.roles.map(r=> " " + r.name).join(', '))
+					embed.setThumbnail(mentionusers.displayAvatarURL)
+					embed.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
+					embed.setTimestamp()
+				message.channel.send({embed})
+			} else {
+				var embed = new Discord.MessageEmbed()
+					embed.setColor("#940000")	
+					embed.setAuthor("View information about " message.author.name, "https://cdn.discordapp.com/attachments/347288279357456387/349664562510823425/uinfo.png")
+					embed.addField("Nickname", message.member.displayName, true)
+					embed.addField("Discriminator ID", message.author.discriminator, true)
+					embed.addField("User ID", message.author.id, true)
+					embed.addField("Current Status", message.author.presence.status)
+					embed.addField("Joined Discord on", message.member.user.createdAt.toUTCString())
+					embed.addField("Server Joined on", message.member.joinedAt.toUTCString())
+					if (message.member.voiceChannel) {
+						embed.addField("Current Voice Channel", message.member.voiceChannel.name)
+					}
+					embed.addField("Roles", message.member.roles.map(r=> " " + r.name).join(', '))
+					embed.setThumbnail(message.author.displayAvatarURL)
+					embed.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
+					embed.setTimestamp()
+				message.channel.send({embed})
     }
 }
 break;
@@ -356,7 +358,14 @@ var guild = msg.guild
       msg.author.send({embed});
       console.log("========================================================================================\nEVAL RESULTS\nERROR\n\nINPUT:\n" + args.join(' ') + "\nOUTPUT:\n" + clean(err) + "\n========================================================================================\n");
     }
-    break    
+    break;
+		// invite command
+		case "invite":
+			client.generateInvite(['ADMINISTRATOR', 'SEND_MESSAGES', 'MANAGE_GUILD', 'MANAGE_ROLES', 'MANAGE_CHANNELS', 'KICK_MEMBERS', 'READ_MESSAGES', 'BAN_MEMBERS', 'SEND_MESSAGES'])
+			.then(link => {
+				msg.channel.send(`Here is a invite, you can add me to own servers already: ${link}`);
+			});
+			break;
 	    // command that is invalid. 
 		default:
             haveMatched = false     
