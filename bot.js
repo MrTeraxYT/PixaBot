@@ -123,7 +123,7 @@ client.on("message", function(message) {
 				var mentionmembers = message.mentions.members.first()
 				var mentionusers = message.mentions.users.first()
 				var embed = new Discord.RichEmbed()
-					em.setColor("#940000")
+					embed.setColor("#940000")
 					embed.setAuthor("Avatar", "https://cdn.discordapp.com/attachments/347288279357456387/351084610500689940/pxavatar.png")
 					embed.setDescription(mentionusers.username + "'s current avatar")
 					embed.setImage(mentionusers.displayAvatarURL)
