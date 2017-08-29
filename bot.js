@@ -185,7 +185,7 @@ client.on("message", function(message) {
             .setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`.\n\n**Parameters:**\n< > - Required\n[ ] - Optional".replace('px;', prefix))
             .addField("General Commands", "`about` - Information about PixaBot.\n`avatar [mention]` - Fetches a user avatar. If not specified, the user will fetch his/her own avatar.\n`help` - Displays the PixaBot's Help Guide, which is *this* one.\n`ping` - Test a connection to PixaBot.\n`userinfo [mention]` - Displays the user's information. If not specified, it will display his/her own user information.\n`version` - Displays the PixaBot's current version.", true)
             .addField("Fun Commands", "`8ball <question>` - Ask a question to a bot, and what does the bot say…?\n`piko` - Shows the picture of Piko Kugihara, an anime original character serves as a mascot of PixaBot.\n`say <message>` - Say something as a bot!", true)
-			.addField("Music Commands prefix: px!", "`play` - Plays a music.\n`skip` - Skips the current song.\n`stop` - Stops the music and disconnects from the voice channel.", true)
+			.addField("Music Commands", "`play` - Plays a music.\n`skip` - Skips the current song.\n`stop` - Stops the music and disconnects from the voice channel.\n`vol` - controls the volume", true)
             .addField("Moderation Commands", "`ban <mention> <reason>` - Bans the user out of this server.\n`kick <mention> <reason>` - Kicks a member.", true)
             .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
             .setTimestamp()                
@@ -234,68 +234,41 @@ client.on("message", function(message) {
             message.author.send("Here's the mascot, Piko Kugihara (釘原 飛鼓), an anime OC made by YottabyteINSIDE™, also known as Jigs.", { files: [ 'https://cdn.discordapp.com/attachments/347282801021943811/348985242385907714/pixa_by_exjageroo-dbka7oa.png' ] });
             break;
 
-/*
-*	================= MUSIC PLAYER ==================
-*	Commands such as play, stop, skip, queue, etc.
-*
+
 		// play command
 		case "play":
-		if (!args[1]) {
-            var embed = new Discord.RichEmbed()
-				.setColor("#940000")
-				.setAuthor("Music Player", "https://cdn.discordapp.com/attachments/347288279357456387/349279668639367168/music.png")
-				.setTitle("No video URL specified.")
-				.setDescription("Please provide a link.")
-				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
-				.setTimestamp()
-				message.channel.sendMessage({embed});
-				return
-			}
-		 
-			 if (!message.member.voiceChannel) {
-            var embed = new Discord.RichEmbed()
-				.setColor("#940000")
-				.setAuthor("Music Player", "https://cdn.discordapp.com/attachments/347288279357456387/349279668639367168/music.png")
-				.addField("You are not in the voice channel.", "Please join the voice channel to play music.")
-				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
-				.setTimestamp()
-				message.channel.sendMessage({embed});
-				return
-			 }
-		 
-			if (!servers[message.guild.id]) servers[message.guild.id] = {
-				queue: []
-			}
-			
-		 
-		 var server = servers[message.guild.id];
-		 
-		  server.queue.push(args[1]);
-		  
-			 if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
-			 play(connection, message);
-			})
+		message.channel.send("please wait")
 		break;
 		// skip command
 		case "skip":
-			var server = servers[message.guild.id];
-		 
-		 if (server.dispatcher) server.dispatcher.end();
-		 break;
+		message.channel.send("skipped")
+			break;
 		// stop command
 		 case "stop":
-		   var server = servers[message.guild.id];
-		   
-		   if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
-			var embed = new Discord.RichEmbed()
-				.setColor("#940000")
-				.setAuthor("Music Player", "https://cdn.discordapp.com/attachments/347288279357456387/349279668639367168/music.png")
-				.addField("Music stopped.", "I stopped the music and I left the voice channel.")
-				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
-				.setTimestamp()
-				message.channel.sendMessage({embed});
-		   break;
-/*
+		 message.channel.send("I stopped and left")
+		 break;
+		// vol command
+		  case "vol":
+		  message.channel.send("switched volume")
+		  break;
+		// summon
+		 case "summon":
+		 message.channel.send("please wait")
+		 break;
+		 // pause 
+		 case "pause":
+		 message.channel.send("song paused")
+		 break;
+		 // resume
+		 case "resume":
+		 message.channel.send("song resumed")
+		 break;
+		 // playing
+		 case "playing":
+		 message.channel.send("displaying")
+		 break;
+		 
+/*   
 *	================= MUSIC PLAYER ENDS ==================
 */
 	    case "userinfo":
