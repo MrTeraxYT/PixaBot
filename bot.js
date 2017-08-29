@@ -39,7 +39,7 @@ if(AuthDetails.prefix){
 	  else connection.disconnect();
      })}
 
-var version = "v0.3"
+var version = "v0.3.1"
 
 var servers = {};
 
@@ -180,15 +180,20 @@ client.on("message", function(message) {
         // help command
         case "help":
             var embed = new Discord.RichEmbed()
-            .setColor("#940000")
-            .setAuthor("PixaBot Help Guide", "https://cdn.discordapp.com/attachments/347288279357456387/348643679373754369/help.png")
-            .setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`.\n\n**Parameters:**\n< > - Required\n[ ] - Optional".replace('px;', prefix))
-            .addField("General Commands", "`about` - Information about PixaBot.\n`avatar [mention]` - Fetches a user avatar. If not specified, the user will fetch his/her own avatar.\n`help` - Displays the PixaBot's Help Guide, which is *this* one.\n`ping` - Test a connection to PixaBot.\n`userinfo [mention]` - Displays the user's information. If not specified, it will display his/her own user information.\n`version` - Displays the PixaBot's current version.", true)
-            .addField("Fun Commands", "`8ball <question>` - Ask a question to a bot, and what does the bot say…?\n`piko` - Shows the picture of Piko Kugihara, an anime original character serves as a mascot of PixaBot.\n`say <message>` - Say something as a bot!", true)
-			.addField("Music Commands", "`play` - Plays a music.\n`skip` - Skips the current song.\n`stop` - Stops the music and disconnects from the voice channel.\n`vol` - controls the volume", true)
-            .addField("Moderation Commands", "`ban <mention> <reason>` - Bans the user out of this server.\n`kick <mention> <reason>` - Kicks a member.", true)
-            .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
-            .setTimestamp()                
+				.setColor("#940000")
+				.setAuthor("Help", "https://cdn.discordapp.com/attachments/347288279357456387/349276625575346179/dm.png")
+				.setDescription("Sent you a DM for your available commands on this server.")
+				.setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
+				.setTimestamp()                
+		    message.channel.send({embed});
+            var embed = new Discord.RichEmbed()
+				.setColor("#940000")
+				.setAuthor("PixaBot Help Guide", "https://cdn.discordapp.com/attachments/347288279357456387/348643679373754369/help.png")
+				.setDescription("Here are my available commands. To execute one of my commands, my prefix is `px;`.\n\n**Parameters:**\n< > - Required\n[ ] - Optional".replace('px;', prefix))
+				.addField("General Commands", "`about` - Information about PixaBot.\n`avatar [mention]` - Fetches a user avatar. If not specified, the user will fetch his/her own avatar.\n`help` - Displays the PixaBot's Help Guide, which is *this* one.\n`ping` - Test a connection to PixaBot.\n`userinfo [mention]` - Displays the user's information. If not specified, it will display his/her own user information.\n`version` - Displays the PixaBot's current version.", true)
+				.addField("Fun Commands", "`8ball <question>` - Ask a question to a bot, and what does the bot say…?\n`piko` - Shows the picture of Piko Kugihara, an anime original character serves as a mascot of PixaBot.\n`say <message>` - Say something as a bot!", true)
+				.addField("Moderation Commands", "`ban <mention> <reason>` - Bans the user out of this server.\n`kick <mention> <reason>` - Kicks a member.", true)
+				.setTimestamp()                
             if (message.author.id == owner_id) {    
                 embed.addField("Commands for the Bot Owner", "`shutdown` - De-initialize the bot.", true)
             }
@@ -233,9 +238,7 @@ client.on("message", function(message) {
 		    message.channel.send({embed});
             message.author.send("Here's the mascot, Piko Kugihara (釘原 飛鼓), an anime OC made by YottabyteINSIDE™, also known as Jigs.", { files: [ 'https://cdn.discordapp.com/attachments/347282801021943811/348985242385907714/pixa_by_exjageroo-dbka7oa.png' ] });
             break;
-/*   
-*	================= MUSIC PLAYER ENDS ==================
-*/
+		// userinfo command
 	    case "userinfo":
 			if (message.mentions.users.first()) {
 				var mentionmembers = message.mentions.members.first()
@@ -314,7 +317,6 @@ var guild = msg.guild
 	  const embed = new Discord.RichEmbed()
 	  .setAuthor("Eval Results", "https://cdn.discordapp.com/attachments/347288279357456387/349554608068362243/eval.png")
 	  .setTimestamp()
-	  .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
 	  .setColor("#940000")
 	  .setDescription("ERROR")
 	  .addField("📥 Input", args.join(' '))
