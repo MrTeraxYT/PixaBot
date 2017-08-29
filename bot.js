@@ -26,7 +26,8 @@ if(AuthDetails.prefix){
 } else {
 	console.log("No prefix set in auth.json!");
 }
-function play(connection, message) {
+
+	function play(connection, message) {
 	var server = servers[message.guild.id];
 	
 	server.dispatcher = connection.playStream(YTDL(server.queue[0], {filter: "audioonly"}));
@@ -36,7 +37,7 @@ function play(connection, message) {
 	server.dipatcher.on("end", function() {
 	  if(server.queue[0]) play(connection, message);
 	  else connection.disconnect();
-})}
+     })}
 
 var version = "v0.3"
 
@@ -140,7 +141,7 @@ client.on("message", function(message) {
 					embed.setTimestamp()
 				message.channel.send({embed})
 			}
-		}
+		
 		break;
             
         // kick command
@@ -239,7 +240,7 @@ client.on("message", function(message) {
 */
 		// play command
 		case "play":
-			if (!args[1]) {
+		if (!args[1]) {
             var embed = new Discord.RichEmbed()
 				.setColor("#940000")
 				.setAuthor("Music Player", "https://cdn.discordapp.com/attachments/347288279357456387/349279668639367168/music.png")
@@ -249,7 +250,7 @@ client.on("message", function(message) {
 				.setTimestamp()
 				message.channel.sendMessage({embed});
 				return
-			 }
+			}
 		 
 			 if (!message.member.voiceChannel) {
             var embed = new Discord.RichEmbed()
@@ -265,6 +266,7 @@ client.on("message", function(message) {
 			if (!servers[message.guild.id]) servers[message.guild.id] = {
 				queue: []
 			}
+			
 		 
 		 var server = servers[message.guild.id];
 		 
@@ -309,8 +311,8 @@ client.on("message", function(message) {
 					embed.addField("Current Status", mentionmembers.presence.status)
 					embed.addField("Join Discord on", mentionusers.createdAt.toUTCString())
 					embed.addField("Sever joined on", mentionmembers.joinedAt.toUTCString())
-					if (message.member.voiceChannel) {
-						embed.addField("Current Voice Channel", mentionmembers.voiceChannel.name)
+					if(mentionmembers.voiceChannel) {
+                            embed.addField("Current Voice Channel", mentionmembers.voiceChannel.name)
 					}
 					embed.addField("Roles", mentionmembers.roles.map(r=> " " + r.name).join(', '))
 					embed.setThumbnail(mentionusers.displayAvatarURL)
@@ -336,7 +338,7 @@ client.on("message", function(message) {
 					embed.setTimestamp()
 				message.channel.send({embed})
     }
-}
+
 break;
 		//eval command           
         case "eval":
