@@ -43,7 +43,7 @@ var version = "v0.3"
 
 var servers = {};
 
-client.on("ready", () => {
+    client.on('ready', () => {
     client.fetchUser(owner_id)
     var owner = client.users.get(owner_id);  
 	console.log("\n===============================\n")
@@ -233,41 +233,6 @@ client.on("message", function(message) {
 		    message.channel.send({embed});
             message.author.send("Here's the mascot, Piko Kugihara (釘原 飛鼓), an anime OC made by YottabyteINSIDE™, also known as Jigs.", { files: [ 'https://cdn.discordapp.com/attachments/347282801021943811/348985242385907714/pixa_by_exjageroo-dbka7oa.png' ] });
             break;
-
-
-		// play command
-		case "play":
-		message.channel.send("please wait")
-		break;
-		// skip command
-		case "skip":
-		message.channel.send("skipped")
-			break;
-		// stop command
-		 case "stop":
-		 message.channel.send("I stopped and left")
-		 break;
-		// vol command
-		  case "vol":
-		  message.channel.send("switched volume")
-		  break;
-		// summon
-		 case "summon":
-		 message.channel.send("please wait")
-		 break;
-		 // pause 
-		 case "pause":
-		 message.channel.send("song paused")
-		 break;
-		 // resume
-		 case "resume":
-		 message.channel.send("song resumed")
-		 break;
-		 // playing
-		 case "playing":
-		 message.channel.send("displaying")
-		 break;
-		 
 /*   
 *	================= MUSIC PLAYER ENDS ==================
 */
