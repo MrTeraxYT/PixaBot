@@ -237,7 +237,7 @@ client.on("message", function(message) {
 /*
 *	================= MUSIC PLAYER ==================
 *	Commands such as play, stop, skip, queue, etc.
-*/
+*
 		// play command
 		case "play":
 		if (!args[1]) {
@@ -305,12 +305,12 @@ client.on("message", function(message) {
 				var embed = new Discord.RichEmbed()
 					embed.setColor("#940000")
 					embed.setAuthor("View information about " + mentionusers.username, "https://cdn.discordapp.com/attachments/347288279357456387/349664562510823425/uinfo.png")
-					embed.addField("Server nickname", mentionmembers.displayName, true)
+					embed.addField("Nickname", mentionmembers.displayName, true)
 					embed.addField("Discriminator ID", mentionusers.discriminator, true)
 					embed.addField("User ID", mentionmembers.id, true)
 					embed.addField("Current Status", mentionmembers.presence.status)
 					embed.addField("Join Discord on", mentionusers.createdAt.toUTCString())
-					embed.addField("Sever joined on", mentionmembers.joinedAt.toUTCString())
+					embed.addField("Sever Joined on", mentionmembers.joinedAt.toUTCString())
 					if(mentionmembers.voiceChannel) {
                             embed.addField("Current Voice Channel", mentionmembers.voiceChannel.name)
 					}
