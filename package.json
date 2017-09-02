@@ -1,0 +1,22 @@
+{
+  "name": "pixabot",
+  "version": "0.3.1",
+  "description": "A Discord bot that features games, image manipulation, moderation and music commands; written in JavaScript.",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeyimKaiss/PixaBot.git"
+  },
+  "author": "HeyimKaiss",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HeyimKaiss/PixaBot/issues"
+  },
+  "homepage": "https://github.com/HeyimKaiss/PixaBot#readme",
+  "dependencies": {
+    "discord.js": "^11.1.0"
+  }
+}

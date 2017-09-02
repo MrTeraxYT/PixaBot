@@ -4,6 +4,11 @@
 
 A Discord bot that features games, image manipulation, moderation and music commands; written in JavaScript.
 
+## Operations
+To install the required dependencies, simply run `npm install`.
+
+To run the bot, simply run `npm start` or `node bot.js`.
+
 ## Commands
 To execute these commands, the command's prefix is `px;`.
 ***Parameters:** < > - required; [ ] - optional
