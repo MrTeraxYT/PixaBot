@@ -5,9 +5,22 @@ const client = new Discord.Client();
 // Bot user status
 function setGame() {
     var games = [
-        `${config.prefix} for help`,
-        "developed by Rain",
-        "Piko-chan~ <3"
+        `${config.prefix}help | ${client.guilds.size} servers operating`,
+        `Developed by ${client.users.get(config.owner).username} & ${client.users.get(config.coowner).username}`,
+        "Piko-chan~ <3",
+        "Piiiiiiko…! T_T",
+        "Booya!",
+        "Arigatou-gozaimasu!",
+        "有難う御座います",
+        `at ${config.version}`,
+        "Paint 3D",
+        "with my Sceptile",
+        "against NotSoBot",
+        "against Ayana",
+        "against Dyno",
+        "against Miki",
+        "against ErisBot",
+        "to PWN Dad Bot"
     ]
 
     client.user.setPresence({
@@ -63,29 +76,27 @@ client.on("message", function(message) {
 
     // Help Command
     if (message.content === `${config.prefix}help`) {
-        // This sends alongside with the actual help
-        // var embed = new Discord.RichEmbed()
-        //     .setAuthor("Help", "https://cdn.discordapp.com/attachments/347288279357456387/349276625575346179/dm.png")
-        //     .setDescription("Sent you a DM for the list of your available commands.")
-        //     .setColor("#940000")
-        //     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
-        //     .setTimestamp()
-        // message.channel.send({embed});
-
+         var embed = new Discord.RichEmbed()
+            .setAuthor("Help", "https://cdn.discordapp.com/attachments/347288279357456387/349276625575346179/dm.png")
+            .setDescription("Sent you a DM for the list of your available commands.")
+            .setThumbnail("https://cdn.discordapp.com/attachments/347288279357456387/348643679373754369/help.png")
+            .setColor("#940000")
+            .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
+            .setTimestamp()
+            message.channel.send({embed});
         var embed = new Discord.RichEmbed()
             .setAuthor(`${client.user.username} Help Guide`, "https://cdn.discordapp.com/attachments/347288279357456387/348643679373754369/help.png")
             .setDescription("Here are my available commands. To execute one of my commands, my prefix is `" + config.prefix + "`.\n\n**Parameters:**\n< > - Required\n[ ] - Optional")
-            .addField("General Commands", "`about` - Information about " + client.user.username + ".\n`avatar [mention]` - Fetches a user avatar. If not specified, the user will fetch his/her own avatar.\n`help` - Displays the " + client.user.username + "'s Help Guide, which is *this* one.\n`ping` - Test a connection to PixaBot.\n`userinfo [mention]` - Displays the user's information. If not specified, it will display his/her own user information.\n`version` / `ver` - Displays the " + client.user.username + "'s current version.")
+            .addField("General Commands", "`about` - Information about " + client.user.username + ".\n`avatar [mention]` - Fetches a user avatar. If not specified, the user will fetch his/her own avatar.\n`help` - Displays the " + client.user.username + "'s Help Guide, which is *this* one.\n`invite` - Sends the bot's invite link to join me into your server.\n`ping` - Test a connection to PixaBot.\n`userinfo` / `uinfo [mention]` - Displays the user's information. If not specified, it will display his/her own user information.\n`version` / `ver` - Displays the " + client.user.username + "'s current version.")
             .addField("Fun Commands", "`8ball <question>` - Ask a question to a bot, and what does the bot say…?\n`piko` - Shows the picture of Piko Kugihara, an anime original character serves as a mascot of " + client.user.username + ".\n`say <message>` - Say something as a bot!")
             .addField("Music Commands", "`play` - Plays a music.\n`skip` - Skips the current song.\n`stop` - Stops the music and disconnects from the voice channel.\n`vol` - controls the volume")
             .addField("Moderation Commands", "`ban <mention> <reason>` - Bans the user out of this server.\n`kick <mention> <reason>` - Kicks a member.")
             .setColor("#940000")
-            .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
             .setTimestamp()                
             if (message.author.id == config.owner) {    
                 embed.addField("Commands for the Bot Owner", "`shutdown` - De-initialize the bot.")
             }
-        message.channel.send({embed});
+        message.author.send({embed});
     }
 
     // About Command
@@ -101,7 +112,27 @@ client.on("message", function(message) {
             .setTimestamp()
 		message.channel.send({embed});
     }
-
+    
+    // Piko Command (PixaBot's mascot)
+    if (message.content === `${config.prefix}piko`) {
+        var embed = new Discord.RichEmbed()
+			.setColor("#940000")
+			.setAuthor("Piko-chan!", "https://cdn.discordapp.com/attachments/347288279357456387/349276625575346179/dm.png")
+			.setDescription("Sent you a DM for the mascot!")
+			.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
+            .setThumbnail("https://cdn.discordapp.com/attachments/347288279357456387/353604944395370508/pxpiko.png")
+			.setTimestamp()                
+		    message.channel.send({embed});
+        var embed = new Discord.RichEmbed()    
+			.setColor("#940000")
+			.setAuthor(`${client.user.username}'s Mascot`, "https://cdn.discordapp.com/attachments/347288279357456387/353604944395370508/pxpiko.png")
+			.setDescription("Here's the mascot, Piko Kugihara (釘原 飛鼓), an anime OC made by EcoTech™, also known as Jigs.")
+            .addField("Further Information", `*[Deviation page from DeviantArt](https://exjageroo.deviantart.com/art/Piko-Kugihara-699196762)*`)
+            .setImage("https://orig13.deviantart.net/ce10/f/2017/228/5/3/pixa_by_exjageroo-dbka7oa.png")
+			.setTimestamp()                
+		    message.author.send({embed});
+    }
+    
     // Version Command
     if (message.content === `${config.prefix}ver` || message.content === `${config.prefix}version`) {
         var embed = new Discord.RichEmbed()
@@ -130,7 +161,7 @@ client.on("message", function(message) {
         })
 
         setTimeout(function() {
-            console.log("Bot successfully shut downed");
+            console.log("Bot successfully shut downed.");
             process.exit(0);
         }, 2000)
     } 
@@ -180,7 +211,7 @@ client.on("message", function(message) {
         client.generateInvite(['ADMINISTRATOR']).then(link => {
 			var embed = new Discord.RichEmbed()
 				.setAuthor("Invite", "https://cdn.discordapp.com/attachments/347288279357456387/353230595192651777/pxinvite.png")
-				.setDescription("Here is a invite, you can add me to own servers already by clicking the link below.")
+				.setDescription("Here is an invite, you can add me to own servers already by clicking the link below.")
 				.addField("Bot Invite", `[Click here!](${link})`)
                 .setColor("#940000")
                 .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
@@ -190,7 +221,7 @@ client.on("message", function(message) {
     }
 
     // User Info Command
-    if (message.content === `${config.prefix}userinfo`) {
+    if (message.content === `${config.prefix}userinfo` || message.content === `${config.prefix}uinfo`) {
         if (!msg.guild) return msg.channel.send(":x: *This command is not avaible in DMs.*");
         
         // Not working
