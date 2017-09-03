@@ -10,13 +10,15 @@
     "type": "git",
     "url": "git+https://github.com/HeyimKaiss/PixaBot.git"
   },
-  "author": "HeyimKaiss",
+  "author": "Kaiss Assadi",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/HeyimKaiss/PixaBot/issues"
   },
   "homepage": "https://github.com/HeyimKaiss/PixaBot#readme",
   "dependencies": {
-    "discord.js": "^11.1.0"
+    "discord.js": "^11.1.0",
+    "opusscript": "0.0.3",
+    "ytdl-core": "^0.17.1"
   }
 }
