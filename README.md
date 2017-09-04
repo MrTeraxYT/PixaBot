@@ -24,14 +24,32 @@ To execute these commands, the command's prefix is `px;`.
 ## Version history
 
 ### v0.4
-*This documentation is preliminary and is subjected to change.*
+- [FriendsNone] **Music Player:**  Play some tunes. Only basic commands for the music that you'll ever need, so this considered as a beta.
+- [FriendsNone] The bot has rewritten for better quality of our bot.
+- Added necessary icons for the `help` and `piko` commands.
 
-- **Moderation commands:** Manage the members. Kick, ban—you name it. Use the moderation commands as prescribed from the Help Guide.
+### v0.3.3
+*This version contains backports on certain commands that will be introduced for the upcoming v0.4 of PixaBot.*
+- The `piko` command is now in embed format!
+- The `invite` command is also in embed formatting as well.
+- Minor tweaks to `ping` command.
+
+### v0.3.2
+- Fixed a bug on `help` where the Help Guide still sends on the guild instead of DMs.
+- Backported with the new `ping` command for the upcoming v0.4 of PixaBot, featuring the latency measurement on both the message and the API.
+- The bot's avatar in the `about` now displays the most up to date avatar.
+
+### v0.3.1
+- We dropped an experimental music player feature due to a massive bug.
+- Bug fixes and minor tweaks for `userinfo`.
 
 ### v0.3
-*This documentation is preliminary and is subjected to change.*
-
-- *(experimental)* **Music player:** You can now play music! Use the music commands as prescribed from the Help Guide.
+*This version contains features that are mostly derived from YottaBot, the project that we also made.*
+- [Mr. Terax and Jigs_Q] **User information:** Displays your user information or anybody else in the server. *(syntax: `px;userinfo [mention]`)*
+- [Jigs_Q] **User avatars:** You can now fetch your Discord avatar or anybody else's avatar! *(syntax: `px;avatar [mention]`)*
+- **Invite the bot to your server:** You can now invite our bot to join on your servers! *(syntax: `px;invite`)*
+- [Zenrac] We fixed a bug where the `eval` command displays an "Unknown Command" error, but the command executes correctly.
+- The music function is still unstable and unfunctional due to a bug. We will fix this in the future releases of PixaBot.
 
 ### v0.2
 - **Embed texts:** Certain commands now feature the embedded rich text layout.
