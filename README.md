@@ -27,6 +27,7 @@ To execute these commands, the command's prefix is `px;`.
 - [FriendsNone] **Music Player:**  Play some tunes. Only basic commands for the music that you'll ever need, so this considered as a beta.
 - [FriendsNone] The bot has rewritten for better quality of our bot.
 - Added necessary icons for the `help` and `piko` commands.
+- Playing or streaming status is now finally displayed! *(Derived from YottaBot)*
 
 ### v0.3.3
 *This version contains backports on certain commands that will be introduced for the upcoming v0.4 of PixaBot.*
