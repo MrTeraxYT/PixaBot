@@ -264,7 +264,7 @@ client.on("message", function(message) {
                     .addField("Current Status", mentionmembers.presence.status)
                     .addField("Join Discord on", mentionusers.createdAt.toUTCString())
                     .addField("Sever Joined on", mentionmembers.joinedAt.toUTCString())
-                    .addField("Roles", mentionmembers.roles.map(r=> " " + r.name).join(', '))
+                    .addField("Roles", mentionmembers.roles.map(r=>r.name).join('・'))
                     .setThumbnail(mentionusers.displayAvatarURL)
                     .setColor("#940000")
                     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
@@ -282,7 +282,7 @@ client.on("message", function(message) {
                     .addField("Current Status", message.author.presence.status)
                     .addField("Joined Discord on", message.member.user.createdAt.toUTCString())
                     .addField("Server Joined on", message.member.joinedAt.toUTCString())
-                    .addField("Roles", message.member.roles.map(r=> " " + r.name).join(', '))
+                    .addField("Roles", message.member.roles.map(r=>r.name).join('・'))
                     .setThumbnail(message.author.displayAvatarURL)
                     .setColor("#940000")	
                     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
@@ -292,6 +292,25 @@ client.on("message", function(message) {
                     }
                 message.channel.send({embed})
             }
+            break;
+
+        case "sinfo":
+        case "serverinfo":
+            var verificationLevels = ["None", "Low", "Medium", "(╯°□°）╯︵ ┻━┻ (High)", "(ﾉಥ益ಥ）ﾉ ┻━┻ (Extreme)"];
+            var embed = new Discord.RichEmbed()
+                .setAuthor(`Server Information – ${message.guild.name}`, "https://cdn.discordapp.com/attachments/347288279357456387/349805277630955523/sinfo.png")
+                .setColor("#940000")
+                .setThumbnail(message.guild.iconURL)
+                .addField("Server ID", message.guild.id)
+                .addField("Owner", `${message.guild.owner.user.tag}\n*[ID: ${message.guild.owner.user.id}]*`)
+                .addField("Verification Level", verificationLevels[message.guild.verificationLevel], true)
+                .addField("Region", message.guild.region)
+                .addField("Server Created on", message.guild.createdAt.toUTCString())
+                .addField("# of Members", message.guild.memberCount)
+                .addField("Roles Available", message.guild.roles.map(role=>role.name).join('・'))
+                .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
+                .setTimestamp()
+            message.channel.send({embed})
             break;
 
         case "help":
@@ -307,7 +326,7 @@ client.on("message", function(message) {
             var embed = new Discord.RichEmbed()
                 .setAuthor(`${client.user.username} Help Guide`, "https://cdn.discordapp.com/attachments/347288279357456387/348643679373754369/help.png")
                 .setDescription("Here are my available commands. To execute one of my commands, my prefix is `" + config.prefix + "`.\n\n**Parameters:**\n< > - Required\n[ ] - Optional")
-                .addField("General Commands", "`about` - Information about " + client.user.username + ".\n`avatar [mention]` - Fetches the user's avatar. If not specified, the user will fetch his/her own avatar.\n`help` - Displays " + client.user.username + "'s Help Guide, which is *this* one.\n`invite` - Sends an invite link to add me into a server that you own or moderate.\n`ping` - Checks the response time of " + client.user.username + ".\n`userinfo`/`uinfo [mention]` - Displays the user's information. If not specified, it will display his/her own user information.\n`version`/`ver` - Shows you the current version of " + client.user.username + ".")
+                .addField("General Commands", "`about` - Information about " + client.user.username + ".\n`avatar [mention]` - Fetches the user's avatar. If not specified, the user will fetch his/her own avatar.\n`help` - Displays " + client.user.username + "'s Help Guide, which is *this* one.\n`invite` - Sends an invite link to add me into a server that you own or moderate.\n`ping` - Checks the response time of " + client.user.username + ".\n`serverinfo`/`sinfo` - Displays this server's information.\n`userinfo`/`uinfo [mention]` - Displays the user's information. If not specified, it will display his/her own user information.\n`version`/`ver` - Shows you the current version of " + client.user.username + ".")
                 .addField("Fun Commands", "`8ball <question>` - Ask a question, and I'll reply. *wink*\n`piko` - Shows a picture of Piko Kugihara, an anime original character that serves as a mascot of " + client.user.username + ".\n`say <message>` - Say something as a bot!\n`embedsay <message>` - Same as say but on an embed!")
                 .addField("Music Commands", "`play <video link/id>` - Plays a music.\n`skip` - Skips the current song.\n`stop` - Stops the music and disconnects from the voice channel.")
                 //.addField("Moderation Commands", "`ban <mention> <reason>` - Bans the user out of this server.\n`kick <mention> <reason>` - Kicks a member.")
@@ -331,6 +350,22 @@ client.on("message", function(message) {
                 .setTimestamp()
             message.channel.send({embed});
             break;
+
+        case "purge":
+            const user = message.mentions.users.first();
+            const amount = !!parseInt(message.content.split(' ')[1]) ? parseInt(message.content.split(' ')[1]) : parseInt(message.content.split(' ')[2])
+            if (!amount) return message.reply('You must specify an amount (100 or less) to delete past messages.');
+            if (!amount && !user) return message.reply('You must specify a user and amount (or just an amount) of messages to purge.');
+            message.channel.fetchMessages({
+                limit: amount,
+            }).then((messages) => {
+                if (user) {
+                    const filterBy = user ? user.id : Client.user.id;
+                    messages = messages.filter(m => m.author.id === filterBy).array().slice(0, amount);
+                }
+                message.channel.bulkDelete(messages).catch(error => console.log(error.stack));
+            });
+        break;
 
         case "ver":
         case "version":
@@ -405,5 +440,17 @@ client.on("message", function(message) {
                         console.log("========================================================================================\nEVAL RESULTS\nERROR\n\nINPUT:\n" + args.join(' ') + "\nOUTPUT:\n" + clean(err) + "\n========================================================================================\n");
                     }
         break;
+
+        default:
+            haveMatched = false
+            var embed = new Discord.RichEmbed()
+                .setColor("#940000")
+                .setAuthor("Unknown Command", "https://cdn.discordapp.com/attachments/347288279357456387/349278178499493888/unknowncmd.png")
+                .setTitle("The specified command that you are trying to execute is invalid.")
+                .setDescription("Use `" + config.prefix + "help` to view my available commands.")
+                .setFooter("Requested by " + message.author.tag, message.author.displayAvatarURL)
+                .setTimestamp()                
+            message.channel.send({embed})
+            break;
     }
 })
