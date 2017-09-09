@@ -6,7 +6,7 @@ const client = new Discord.Client();
 // Bot user status
 function setGame() {
     var games = [
-        `${config.prefix}help | ${client.guilds.size} servers operating`,
+        `${config.prefix}help | ${client.guilds.size} servers`,
         `Developed by ${client.users.get(config.owner).username} & ${client.users.get(config.coowner).username}`,
         "Piko-chan~ <3",
         "Piiiiiiko…! T_T",
@@ -16,11 +16,17 @@ function setGame() {
         `at ${config.version}`,
         "Paint 3D",
         "with my Sceptile",
+        "with my Lucario",
         "against NotSoBot",
         "against Ayana",
         "against Dyno",
         "against Miki",
         "against ErisBot",
+        "against Mee6",
+        "against ChromeBot",
+        "against T-BOT",
+        "with Watora",
+        "with Xiao Pai",
         "to PWN Dad Bot"
     ]
 
@@ -49,7 +55,7 @@ function play(connection, message) {
 			.setAuthor("Music Player", "https://cdn.discordapp.com/attachments/347288279357456387/349279668639367168/music.png")
             .setThumbnail(info.thumbnail)
 			.addField("Now Playing", `*${info.title}*`)
-			.setFooter(`Requested by  ${message.author.tag}`, message.author.displayAvatarURL)
+			.setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
 			.setTimestamp()
 		message.channel.sendMessage({embed});
     });
@@ -105,8 +111,8 @@ client.on("message", function(message) {
                 var embed = new Discord.RichEmbed()
                     .setAuthor("Pong!", "https://cdn.discordapp.com/attachments/347288279357456387/348647441815306241/ping.png")
                     .setDescription("**Current Ping Results**")
-                    .addField("Latency:", `${m.createdTimestamp - message.createdTimestamp}ms`, true)
-                    .addField("API Latency:", `${Math.round(client.ping)}ms`, true)
+                    .addField("Latency", `${m.createdTimestamp - message.createdTimestamp}ms`, true)
+                    .addField("API Latency", `${Math.round(client.ping)}ms`, true)
                     .setColor("#940000")
                     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
                     .setTimestamp()
@@ -117,7 +123,7 @@ client.on("message", function(message) {
 
         case "say":
             if (message.content.length < config.prefix.length + 4) {
-                message.channel.send("Come on, say something!");
+                message.reply("Come on, say something!");
             } else { 
                 message.channel.send(message.content.replace(config.prefix + "say ", ''));
                 message.delete();
@@ -139,7 +145,7 @@ client.on("message", function(message) {
 
         case "8ball":
             if (message.content.length < config.prefix.length + 6) {
-                message.channel.send("Go ahead, ask me anything.");
+                message.reply("Go ahead, ask me anything.");
             } else {        
                 var choices = [
                     "Yes.",
@@ -252,6 +258,12 @@ client.on("message", function(message) {
         
         case "uinfo":
         case "userinfo":
+            var statuses = {
+                online: 'Online',
+                idle: 'Idle',
+                dnd: 'Do Not Disturb',
+                offline: 'Offline'
+            };
             if (message.channel.type === "dm") return message.channel.send(":x: *This command is not avaible in DMs.*");
             if (message.mentions.users.first()) {
                 const mentionmembers = message.mentions.members.first()
@@ -261,10 +273,10 @@ client.on("message", function(message) {
                     .addField("Nickname", mentionmembers.displayName, true)
                     .addField("Discriminator ID", mentionusers.discriminator, true)
                     .addField("User ID", mentionmembers.id, true)
-                    .addField("Current Status", mentionmembers.presence.status)
+                    .addField("Current Status", statuses[mentionmembers.presence.status], true)
                     .addField("Join Discord on", mentionusers.createdAt.toUTCString())
                     .addField("Sever Joined on", mentionmembers.joinedAt.toUTCString())
-                    .addField("Roles", mentionmembers.roles.map(r=>r.name).join('・'))
+                    .addField("Roles", mentionmembers.roles.map(r=>r.name).join(' • '))
                     .setThumbnail(mentionusers.displayAvatarURL)
                     .setColor("#940000")
                     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
@@ -279,10 +291,10 @@ client.on("message", function(message) {
                     .addField("Nickname", message.member.displayName, true)
                     .addField("Discriminator ID", message.author.discriminator, true)
                     .addField("User ID", message.author.id, true)
-                    .addField("Current Status", message.author.presence.status)
+                    .addField("Current Status", statuses[message.author.presence.status], true)
                     .addField("Joined Discord on", message.member.user.createdAt.toUTCString())
                     .addField("Server Joined on", message.member.joinedAt.toUTCString())
-                    .addField("Roles", message.member.roles.map(r=>r.name).join('・'))
+                    .addField("Roles", message.member.roles.map(r=>r.name).join(' • '))
                     .setThumbnail(message.author.displayAvatarURL)
                     .setColor("#940000")	
                     .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
@@ -296,7 +308,26 @@ client.on("message", function(message) {
 
         case "sinfo":
         case "serverinfo":
-            var verificationLevels = ["None", "Low", "Medium", "(╯°□°）╯︵ ┻━┻ (High)", "(ﾉಥ益ಥ）ﾉ ┻━┻ (Extreme)"];
+            var verificationLevels = [
+                "None",
+                "Low",
+                "Medium",
+                "(╯°□°）╯︵ ┻━┻ (High)",
+                "┻━┻彡 ヽ(ಠДಠ)ノ彡┻━┻ (Extreme)"
+            ];
+            var regions = {
+                brazil: "🇧🇷 Brazil",
+                'eu-central': "🇪🇺 Central Europe",
+                hongkong: "🇭🇰 Hong Kong",
+                russia: "🇷🇺 Russia",
+                singapore: "🇸🇬 Singapore",
+                sydney: "🇦🇺 Sydney",
+                'us-central': "🇺🇸 United States – Central",
+                'us-east': "🇺🇸 United States – East",
+                'us-south': "🇺🇸 United States – South",
+                'us-west': "🇺🇸 United States – West",
+                'eu-west': "🇪🇺 Western Europe"
+            };
             var embed = new Discord.RichEmbed()
                 .setAuthor(`Server Information – ${message.guild.name}`, "https://cdn.discordapp.com/attachments/347288279357456387/349805277630955523/sinfo.png")
                 .setColor("#940000")
@@ -304,10 +335,36 @@ client.on("message", function(message) {
                 .addField("Server ID", message.guild.id)
                 .addField("Owner", `${message.guild.owner.user.tag}\n*[ID: ${message.guild.owner.user.id}]*`)
                 .addField("Verification Level", verificationLevels[message.guild.verificationLevel], true)
-                .addField("Region", message.guild.region)
+                .addField("Region", regions[message.guild.region], true)
                 .addField("Server Created on", message.guild.createdAt.toUTCString())
-                .addField("# of Members", message.guild.memberCount)
-                .addField("Roles Available", message.guild.roles.map(role=>role.name).join('・'))
+                .addField("Members", message.guild.memberCount)
+                .addField("Roles Available", message.guild.roles.map(role=>role.name).join(' • '))
+                .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
+                .setTimestamp()
+            message.channel.send({embed})
+            break;
+
+        case "stats":
+		    var time;
+		    var uptime = parseInt(client.uptime);
+		    uptime = Math.floor(uptime / 1000);
+            var hours   = Math.floor(uptime / 3600);
+            var minutes = Math.floor((uptime - (hours * 3600)) / 60);
+            var seconds = uptime - (hours * 3600) - (minutes * 60);
+            var embed = new Discord.RichEmbed()
+                .setAuthor(`${client.user.username}'s Statistics`, "https://cdn.discordapp.com/attachments/347288279357456387/355826464224182276/stats.png")
+                .setColor("#940000")
+                .setThumbnail(client.user.displayAvatarURL)
+                .addField("Bot ID", client.user.id)
+                .addField("Version", config.version)
+                .addField("Bot Uptime", `${hours} hrs, ${minutes} mins, ${seconds} secs`)
+                .addField("Bot Owner", `${client.users.get(config.owner).tag}\n*[ID: ${client.users.get(config.owner).id}]*`)
+                .addField("Prefix", "`" + config.prefix + "`")
+                .addField("User Count", client.users.size)
+                .addField("Server Count", client.guilds.size)
+                .addField("Channel Count", client.channels.size)
+                .addField("Voice Channels", client.voiceConnections.size)
+                .addField("discord.js Version", Discord.version)
                 .setFooter(`Requested by ${message.author.tag}`, message.author.displayAvatarURL)
                 .setTimestamp()
             message.channel.send({embed})
@@ -330,6 +387,7 @@ client.on("message", function(message) {
                 .addField("Fun Commands", "`8ball <question>` - Ask a question, and I'll reply. *wink*\n`piko` - Shows a picture of Piko Kugihara, an anime original character that serves as a mascot of " + client.user.username + ".\n`say <message>` - Say something as a bot!\n`embedsay <message>` - Same as say but on an embed!")
                 .addField("Music Commands", "`play <video link/id>` - Plays a music.\n`skip` - Skips the current song.\n`stop` - Stops the music and disconnects from the voice channel.")
                 .addField("Moderation Commands", /*"`ban <mention> <reason>` - Bans the user out of this server.\n`kick <mention> <reason>` - Kicks a member."*/ "`purge <amount 1~100>` - Deletes bulk messages.")
+                .addField("Utility Commands", "`stats` - View the bot's status.")
                 .setColor("#940000")
                 .setTimestamp()                
                 if (message.author.id == config.owner) {    
